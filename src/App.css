@@ -1,0 +1,79 @@
+#AppBody {
+  height: 100%;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+  background-image: linear-gradient(180deg, #0085FF, rgba(252, 0, 211, 0.75));
+  overflow: hidden;
+}
+
+#AppHeader {
+  width: 100%;
+  height: 5vh;
+  padding-top: 10px;
+  position: relative;
+  top: 0;
+}
+
+#MyProfile {
+  float: left;
+}
+
+#MyProfile > a {
+  padding: 10px;
+  margin-top: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: bolder;
+  text-align: center;
+}
+
+#Title {
+  display: block;
+  width: 250px;
+  margin: auto;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  font-weight: bolder;
+  padding: 4px;
+  border-radius: 20px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+#AppContent {
+  width: 100%;
+  height: 89vh;
+  padding: 10px;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+.ControlPanelContainer {
+  float: left;
+  height: 100%;
+  width: 20%;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+.VisualiserContainer {
+  float: right;
+  height: 100%;
+  width: 79%;
+  box-sizing: border-box;
+  border: 1px solid red;
+}
+
+#AppFooter {
+  width: 100%;
+  height: 3vh;
+  position: fixed;
+  bottom: 0;
+}
+
+#CopyRight {
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
