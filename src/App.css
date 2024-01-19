@@ -3,7 +3,9 @@
   width: 100%;
   padding: 10px;
   box-sizing: border-box;
-  background-image: linear-gradient(180deg, #0085FF, rgba(252, 0, 211, 0.75));
+  background-image: linear-gradient(180deg, #1168ff, #7338cba7,  rgba(252, 0, 211, 0.75)),
+                    linear-gradient(270deg, #1168ff, #7338cba7, rgba(252, 0, 211, 0.75)),
+                    linear-gradient(90deg, #1168ff, #7338cba7, rgba(252, 0, 211, 0.75));
   overflow: hidden;
 }
 
