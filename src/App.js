@@ -1,13 +1,12 @@
 import './App.css';
-import ControlPanel from './components/controlepanel';
-import Visualiser from './components/visualiser';
+import { ControlPanel, Visualiser } from './components';
 
 function App() {
   return (
     <div id="AppBody">
       <div id="AppHeader">
         <div id="MyProfile">
-          <a href="github.com/Suraj-Upadhyay">github.com/Suraj-Upadhyay</a>
+          <a href="https://github.com/Suraj-Upadhyay" target="_blank">github.com/Suraj-Upadhyay</a>
         </div>
         <div id="Title">
           Algorithm Visualiser
