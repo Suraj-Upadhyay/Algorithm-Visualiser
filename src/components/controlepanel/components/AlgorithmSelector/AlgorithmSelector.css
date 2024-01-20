@@ -1,0 +1,59 @@
+.AlgorithmSelector {
+    width: 100%;
+    height: 100%;
+}
+
+.DropDown {
+    position: relative;
+    width: 70%;
+    height: 40%;
+    margin: auto;
+    top: 30%;
+    background-color: #FF72F9;
+    border-radius: 20px;
+}
+
+.DropDown > p {
+    padding: 10px;
+    font-weight: bolder;
+    color: white;
+    text-align: center;
+    margin: auto;
+    cursor: pointer;
+}
+
+.DropDown:hover .DropDownList{
+    display: block;
+}
+
+.DropDownList{
+    display: none;
+    margin-top: 2px;
+    width: 100%;
+    height: 700%;
+    background-color: #fc8cf6;
+    z-index: 1;
+    overflow-y: auto;
+    border-radius: 20px;
+}
+
+.DropDownList > ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.DropDownList li {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 42.2px;
+    padding-top: 10px;
+    text-align: center;
+    box-sizing: border-box;
+    background-color: white;
+}
+
+.DropDownList li:hover {
+    opacity: 80%;
+}

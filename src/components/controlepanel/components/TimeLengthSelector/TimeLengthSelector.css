@@ -1,0 +1,16 @@
+.TimeLengthSelector {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 70%;
+    height: 100%;
+    margin: auto;
+}
+
+.TimeLengthSelector p {
+    margin: 0;
+    padding: 0;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+}

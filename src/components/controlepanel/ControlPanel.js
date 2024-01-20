@@ -8,17 +8,17 @@ from "./components";
 function ControlPanel(props) {
     return (
         <div className="ControlPanel">
-            <div className="AlgorithmSelectorContainer">
-                <AlgorithmSelector></AlgorithmSelector>
+            <div>
+                <AlgorithmSelector/>
             </div>
-            <div className="DataLengthSelectorContainer">
-                <DataLengthSelector></DataLengthSelector>
+            <div>
+                <DataLengthSelector/>
             </div>
-            <div className="TimeLengthSelectorContainer">
-                <TimeLengthSelector></TimeLengthSelector>
+            <div>
+                <TimeLengthSelector/>
             </div>
-             <div className="DataSizeSelectorContainer">
-                <DataSizeSelector></DataSizeSelector>
+             <div>
+                <DataSizeSelector/>
             </div>
         </div>
     );
