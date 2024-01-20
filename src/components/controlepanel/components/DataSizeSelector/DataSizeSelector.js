@@ -6,8 +6,9 @@ function DataSizeSelector() {
 		<div className='DataSizeSelector'>
 			<p>Maximum Data</p>
 			<div>
-				<Slider>
-				</Slider>
+				<span className="minData">5</span>
+				<span className="maxData">100</span>
+				<Slider></Slider>
 			</div>
 		</div>
 	)

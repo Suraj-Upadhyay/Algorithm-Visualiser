@@ -7,10 +7,22 @@
     margin: auto;
 }
 
-.TimeLengthSelector p {
+.TimeLengthSelector p, .TimeLengthSelector span {
     margin: 0;
     padding: 0;
     color: white;
     text-align: center;
     font-weight: bolder;
+}
+
+.TimeLengthSelector .minData {
+    position: relative;
+    float: left;
+    left: -10px;
+}
+
+.TimeLengthSelector .maxData {
+    position: relative;
+    float: right;
+    right: -10px;
 }

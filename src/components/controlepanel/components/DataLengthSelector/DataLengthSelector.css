@@ -7,10 +7,22 @@
     margin: auto;
 }
 
-.DataLengthSelector p {
+.DataLengthSelector p, .DataLengthSelector span {
     margin: 0;
     padding: 0;
     color: white;
     text-align: center;
     font-weight: bolder;
+}
+
+.DataLengthSelector .minData {
+    position: relative;
+    float: left;
+    left: -10px;
+}
+
+.DataLengthSelector .maxData {
+    position: relative;
+    float: right;
+    right: -10px;
 }
