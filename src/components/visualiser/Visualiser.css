@@ -6,4 +6,11 @@
     border-bottom-left-radius: 5px;
 }
 
+.PlayControlContainer { 
+    float: right;
+    height: 40px;
+    width: 240px;
+    margin: 0;
+    padding: 0;
+}
 

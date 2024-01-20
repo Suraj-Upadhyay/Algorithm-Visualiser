@@ -1,11 +1,14 @@
-import "./Visualiser.css"
+import "./Visualiser.css";
+import {PlayControl, DataView} from './components';
 
 function Visualiser(props) {
     return (
         <div className="Visualiser">
-            <div className="PlayControl">
+            <div className="PlayControlContainer">
+                <PlayControl />
             </div>
-            <div className="DataView">
+            <div className="DataViewContainer">
+                <DataView />
             </div>
         </div>
     );
