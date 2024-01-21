@@ -12,7 +12,6 @@ function TimeLengthSelector(props) {
 					minData={props.minTime}
 					maxData={props.maxTime}
 					defaultData={props.defaultTime}
-					data={props.animationTime}
 					onDataChange={props.onAnimationTimeChange}
 				/>
 			</div>

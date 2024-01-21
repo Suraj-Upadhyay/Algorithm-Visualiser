@@ -12,7 +12,6 @@ function DataLengthSelector(props) {
 					minData={props.minDataBars}
 					maxData={props.maxDataBars}
 					defaultData={props.defaultDataBars}
-					data={props.dataBars}
 					onDataChange={props.onDataBarsChange}
 				/>
 			</div>

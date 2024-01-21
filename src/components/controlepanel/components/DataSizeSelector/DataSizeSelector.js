@@ -12,7 +12,6 @@ function DataSizeSelector(props) {
 					minData={props.minDataSize}
 					maxData={props.maxDataSize}
 					defaultData={props.defaultDataSize}
-					data={props.dataSize}
 					onDataChange={props.onDataSizeChange}
 				/>
 			</div>

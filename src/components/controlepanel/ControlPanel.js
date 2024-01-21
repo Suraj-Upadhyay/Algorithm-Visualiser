@@ -21,7 +21,6 @@ function ControlPanel(props) {
                     minDataBars={controlPanelConstants.MINDATABARS}
                     maxDataBars={controlPanelConstants.MAXDATABARS}
                     defaultDataBars={controlPanelConstants.DEFAULTDATABARS}
-                    dataBars={props.dataBars}
                     onDataBarsChange={props.onDataBarsChange}
                 />
             </div>
@@ -30,7 +29,6 @@ function ControlPanel(props) {
                     minTime={controlPanelConstants.MINTIME}
                     maxTime={controlPanelConstants.MAXTIME}
                     defaultTime={controlPanelConstants.DEFAULTTIME}
-                    animationTime={props.animationTime}
                     onAnimationTimeChange={props.onAnimationTimeChange}
                 />
             </div>
@@ -39,7 +37,6 @@ function ControlPanel(props) {
                     minDataSize={controlPanelConstants.MINDATASPREAD}
                     maxDataSize={controlPanelConstants.MAXDATASPREAD}
                     defaultDataSize={controlPanelConstants.DEFAULTDATASPREAD}
-                    dataSize={props.dataSpread}
                     onDataSizeChange={props.onDataSpreadChange}
                 />
             </div>

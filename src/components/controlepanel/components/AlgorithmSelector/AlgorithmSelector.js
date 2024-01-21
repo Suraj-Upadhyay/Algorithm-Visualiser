@@ -14,7 +14,7 @@ function AlgorithmSelector(props) {
 						{
 							Object.keys(algoList).map(
 								(item) => {
-									return (<li key={item}>{item}</li>);
+									return (<li key={item} onClick={onAlgoUsedChange}>{item}</li>);
 								}
 							)
 						}

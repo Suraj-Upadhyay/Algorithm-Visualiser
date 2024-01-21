@@ -11,16 +11,16 @@ function App() {
   const [algoUsed, setAlgoUsed] = useState('');
 
   const onDataBarsChange = (event) => {
-    console.log(event);
+    setDataBars(event.target.value);
   };
   const onAnimationTimeChange = (event) => {
-      console.log(event);
+    setAnimationTime(event.target.value);
   };
   const onDataSpreadChange = (event) => {
-    console.log(event);
+    setDataSpread(event.target.value);
   };
   const onAlgoUsedChange = (event) => {
-    console.log(event);
+    setAlgoUsed(event.target.textContent);
   };
 
   return (
@@ -37,14 +37,11 @@ function App() {
         <div className="ControlPanelContainer">
           <ControlPanel
             constants={constants.controlPanelConstants}
-            dataBars={dataBars}
-            animationTime={animationTime}
-            dataSpread={dataSpread}
             algoUsed={algoUsed}
-            onDataBarsChange={()=>onDataBarsChange}
-            onAnimationTimeChange={()=>onAnimationTimeChange}
-            onDataSpreadChange={()=>onDataSpreadChange}
-            onAlgoUsedChange={()=>onAlgoUsedChange}/>
+            onDataBarsChange={onDataBarsChange}
+            onAnimationTimeChange={onAnimationTimeChange}
+            onDataSpreadChange={onDataSpreadChange}
+            onAlgoUsedChange={onAlgoUsedChange}/>
         </div>
         <div className="VisualiserContainer">
           <Visualiser />
