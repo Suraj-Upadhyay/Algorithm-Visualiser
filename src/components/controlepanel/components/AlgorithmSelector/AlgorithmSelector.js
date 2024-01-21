@@ -14,8 +14,7 @@ function AlgorithmSelector(props) {
 						{
 							Object.keys(algoList).map(
 								(item) => {
-									console.log(item);
-									return (<li>{item}</li>);
+									return (<li key={item}>{item}</li>);
 								}
 							)
 						}
