@@ -1,7 +1,7 @@
 import './App.css';
 import { useState } from 'react';
 import { ControlPanel, Visualiser } from './components';
-import * as constants from './constants';
+import * as constants from './assets/constants';
 
 function App() {
 
@@ -46,7 +46,12 @@ function App() {
             onAlgoUsedChange={onAlgoUsedChange}/>
         </div>
         <div className="VisualiserContainer">
-          <Visualiser />
+          <Visualiser
+            dataBars={dataBars}
+            animationTime={animationTime}
+            dataSpread={dataSpread}
+            algoUsed={algoUsed}
+          />
         </div>
       </div>
       <div id="AppFooter">
