@@ -9,6 +9,7 @@ export const MAXDATASPREAD = 1000;
 export const DEFAULTDATASPREAD = MINDATASPREAD;
 
 export const ALGO_IMPLEMENTATION_LIST = {
+    'None': null,
     'Selection Sort': null,
     'Bubble Sort': null,
     'Insertion Sort': null,

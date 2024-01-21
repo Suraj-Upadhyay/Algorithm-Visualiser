@@ -20,7 +20,9 @@ function App() {
     setDataSpread(event.target.value);
   };
   const onAlgoUsedChange = (event) => {
-    setAlgoUsed(event.target.textContent);
+    let newAlgoUsed = event.target.textContent;
+    newAlgoUsed = newAlgoUsed == 'None' ? '' : newAlgoUsed;
+    setAlgoUsed(newAlgoUsed);
   };
 
   return (
