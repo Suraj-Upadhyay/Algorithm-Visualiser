@@ -3,7 +3,7 @@ import './PauseAction.css';
 function PauseAction() {
 	return (
 		<div className='PauseAction'>
-			<span class="material-symbols-outlined">pause</span>
+			<span className="material-symbols-outlined">pause</span>
 		</div>
 	);
 }
