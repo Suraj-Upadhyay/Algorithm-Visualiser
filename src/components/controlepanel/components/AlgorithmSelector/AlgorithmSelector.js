@@ -1,19 +1,24 @@
 import './AlgorithmSelector.css';
 
-function AlgorithmSelector() {
+function AlgorithmSelector(props) {
+	const algoList = props.algoList;
+	const algoUsed = props.algoUsed ? props.algoUsed : 'Select Aglorithm';
+	const onAlgoUsedChange = props.onAlgoUsedChange;
+
 	return (
 		<div className='AlgorithmSelector'>
 			<div className='DropDown'>
-				<p>Select Algorithm</p>
+				<p>{algoUsed}</p>
 				<div className='DropDownList'>
 					<ul>
-						<li>Selection Sort</li>
-						<li>Selection Sort</li>
-						<li>Selection Sort</li>
-						<li>Selection Sort</li>
-						<li>Selection Sort</li>
-						<li>Selection Sort</li>
-						<li>Selection Sort</li>
+						{
+							Object.keys(algoList).map(
+								(item) => {
+									console.log(item);
+									return (<li>{item}</li>);
+								}
+							)
+						}
 					</ul>
 				</div>
 			</div>

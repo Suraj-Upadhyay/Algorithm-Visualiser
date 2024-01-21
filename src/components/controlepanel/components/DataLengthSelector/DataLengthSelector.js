@@ -1,14 +1,20 @@
 import './DataLengthSelector.css';
 import Slider from '../Slider';
 
-function DataLengthSelector() {
+function DataLengthSelector(props) {
 	return (
 		<div className='DataLengthSelector'>
 			<p>Generate Data</p>
 			<div>
-				<span className="minData">5</span>
-				<span className="maxData">100</span>
-				<Slider></Slider>
+				<span className="minData">{props.minDataBars}</span>
+				<span className="maxData">{props.maxDataBars}</span>
+				<Slider
+					minData={props.minDataBars}
+					maxData={props.maxDataBars}
+					defaultData={props.defaultDataBars}
+					data={props.dataBars}
+					onDataChange={props.onDataBarsChange}
+				/>
 			</div>
 		</div>
 	)
