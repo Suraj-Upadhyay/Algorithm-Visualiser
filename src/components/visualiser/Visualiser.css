@@ -14,4 +14,7 @@
     padding: 0;
 }
 
-
+.DataViewContainer {
+    height: 100%;
+    width: 100%;
+}

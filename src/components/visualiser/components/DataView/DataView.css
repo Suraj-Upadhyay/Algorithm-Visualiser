@@ -1,0 +1,9 @@
+.DataView {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    width: 95%;
+    height: 94%;
+    margin: auto;
+    top: 6%;
+}
