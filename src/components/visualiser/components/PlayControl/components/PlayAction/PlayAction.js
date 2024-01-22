@@ -1,9 +1,9 @@
 import './PlayAction.css';
 
-function PlayAction() {
+function PlayAction(props) {
 	return (
-		<div className='PlayAction'>
-			<span className="material-symbols-outlined">play_circle</span>
+		<div className='PlayAction' onClick={props.onPlayControlAction}>
+			<span className="material-symbols-outlined">{props.googleIcon}</span>
 		</div>
 	);
 }

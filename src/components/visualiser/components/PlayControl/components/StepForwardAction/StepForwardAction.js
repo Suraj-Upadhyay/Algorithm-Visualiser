@@ -1,9 +1,9 @@
 import './StepForwardAction.css';
 
-function StepForwardAction() {
+function StepForwardAction(props) {
 	return (
-		<div className='StepForwardAction'>
-			<span className="material-symbols-outlined">arrow_forward_ios</span>
+		<div className='StepForwardAction' onClick={props.onPlayControlAction}>
+			<span className="material-symbols-outlined">{props.googleIcon}</span>
 		</div>
 	);
 }

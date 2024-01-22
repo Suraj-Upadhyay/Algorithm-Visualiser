@@ -1,9 +1,9 @@
 import './PauseAction.css';
 
-function PauseAction() {
+function PauseAction(props) {
 	return (
-		<div className='PauseAction'>
-			<span className="material-symbols-outlined">pause</span>
+		<div className='PauseAction' onClick={props.onPlayControlAction}>
+			<span className="material-symbols-outlined">{props.googleIcon}</span>
 		</div>
 	);
 }

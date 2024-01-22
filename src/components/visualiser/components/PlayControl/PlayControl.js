@@ -4,20 +4,32 @@ import { PauseAction, PlayAction,
 		 StepBackwardAction}
 from './components';
 
-function PlayControl() {
+function PlayControl(props) {
 	return (
 		<div className='PlayControl'>
 			<div>
-				<PauseAction/>
+				<PauseAction
+					googleIcon={props.googleIconText.pause}
+					onPlayControlAction={props.onPlayControlAction}
+				/>
 			</div>
 			<div>
-				<PlayAction/>
+				<PlayAction
+					googleIcon={props.googleIconText.play}
+					onPlayControlAction={props.onPlayControlAction}
+				/>
 			</div>
 			<div>
-				<StepForwardAction/>
+				<StepForwardAction
+					googleIcon={props.googleIconText.forward}
+					onPlayControlAction={props.onPlayControlAction}
+				/>
 			</div>
 			<div>
-				<StepBackwardAction/>
+				<StepBackwardAction
+					googleIcon={props.googleIconText.backward}
+					onPlayControlAction={props.onPlayControlAction}
+				/>
 			</div>
 		</div>
 	)
