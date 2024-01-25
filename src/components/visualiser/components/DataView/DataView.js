@@ -11,12 +11,6 @@ function DataView(props) {
 
 	return (
 		<div className='DataView'>
-			<DataBar></DataBar>
-			<DataBar></DataBar>
-			<DataBar></DataBar>
-			<DataBar></DataBar>
-			<DataBar></DataBar>
-			<DataBar></DataBar>
 		</div>
 	)
 }

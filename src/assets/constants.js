@@ -1,3 +1,5 @@
+import * as algorithms from './algorithms/index.js';
+
 export const MINDATABARS = 5;
 export const MAXDATABARS = 100;
 export const DEFAULTDATABARS = MINDATABARS;
@@ -10,7 +12,7 @@ export const DEFAULTDATASPREAD = MINDATASPREAD;
 
 export const ALGO_IMPLEMENTATION_LIST = {
     'None': null,
-    'Selection Sort': null,
+    'Selection Sort': algorithms.SelectionSort,
     'Bubble Sort': null,
     'Insertion Sort': null,
     'Merge Sort': null,
