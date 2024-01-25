@@ -75,7 +75,7 @@ class Algorithm {
   }
 
   createAlgorithmObject() {
-    const algorithmClassName = constants.ALGO_IMPLEMENTATION_LIST[this.algorithmName];
+    const algorithmClassName = constants.ALGO_IMPLEMENTATION_LIST['Selection Sort'];
     return new algorithmClassName();
   }
 
@@ -122,12 +122,14 @@ class Algorithm {
   }
 }
 
-let algo_obj = new Algorithm(10, 50, 'Selection Sort');
-while(!algo_obj.done) {
-  let indexOrderedArray = algo_obj.stepForward();
-  indexOrderedArray.sort((item1, item2) => item1.index - item2.index);
-  console.log(indexOrderedArray);
-}
+export default Algorithm;
+
+// let algo_obj = new Algorithm(10, 50, 'Selection Sort');
+// while(!algo_obj.done) {
+//   let indexOrderedArray = algo_obj.stepForward();
+//   indexOrderedArray.sort((item1, item2) => item1.index - item2.index);
+//   console.log(indexOrderedArray);
+// }
 
 // Debigging info.
 // console.log("----");

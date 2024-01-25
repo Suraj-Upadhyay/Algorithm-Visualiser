@@ -1,4 +1,4 @@
-import * as algorithms from './algorithms/index.js';
+import {SelectionSort} from './algorithms/index.js';
 
 export const MINDATABARS = 5;
 export const MAXDATABARS = 100;
@@ -12,7 +12,7 @@ export const DEFAULTDATASPREAD = MINDATASPREAD;
 
 export const ALGO_IMPLEMENTATION_LIST = {
     'None': null,
-    'Selection Sort': algorithms.SelectionSort,
+    'Selection Sort': SelectionSort,
     'Bubble Sort': null,
     'Insertion Sort': null,
     'Merge Sort': null,
@@ -50,4 +50,11 @@ export const controlPanelConstants = {
     MAXDATASPREAD: MAXDATASPREAD,
     DEFAULTDATASPREAD: DEFAULTDATASPREAD,
     ALGOLIST: ALGO_IMPLEMENTATION_LIST
+};
+
+export const googleIconTexts = {
+        'play': 'play_circle',
+        'pause': 'pause',
+        'forward': 'arrow_forward_ios',
+        'backward': 'arrow_back_ios'
 };
