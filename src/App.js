@@ -9,6 +9,7 @@ function App() {
   const [animationTime, setAnimationTime] = useState(constants.DEFAULTTIME);
   const [dataSpread, setDataSpread] = useState(constants.DEFAULTDATASPREAD);
   const [algoUsed, setAlgoUsed] = useState('');
+  const [algoDone, setAlgoDone] = useState(false);
 
   const onDataBarsChange = (event) => {
     setDataBars(event.target.value);
@@ -19,6 +20,10 @@ function App() {
   const onDataSpreadChange = (event) => {
     setDataSpread(event.target.value);
   };
+  const onAlgoDoneChange = () => {
+    let newAlgoDone = !algoDone;
+    setAlgoDone(newAlgoDone);
+  }
   const onAlgoUsedChange = (event) => {
     let newAlgoUsed = event.target.textContent;
     newAlgoUsed = newAlgoUsed == 'None' ? '' : newAlgoUsed;
@@ -40,6 +45,7 @@ function App() {
           <ControlPanel
             constants={constants.controlPanelConstants}
             algoUsed={algoUsed}
+            algoDone={algoDone}
             onDataBarsChange={onDataBarsChange}
             onAnimationTimeChange={onAnimationTimeChange}
             onDataSpreadChange={onDataSpreadChange}
@@ -51,6 +57,7 @@ function App() {
             animationTime={animationTime}
             dataSpread={dataSpread}
             algoUsed={algoUsed}
+            onAlgoDoneChange={onAlgoDoneChange}
           />
         </div>
       </div>
