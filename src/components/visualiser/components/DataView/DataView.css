@@ -1,9 +1,10 @@
 .DataView {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    justify-content: space-evenly;
+    align-items: end;
     position: relative;
     width: 95%;
     height: 94%;
     margin: auto;
-    top: 6%;
+    bottom: -2px;
 }

@@ -46,7 +46,7 @@ function Visualiser(props) {
         let data = algorithmObject.stepForward();
         console.log(data);
         setData(data);
-      }, 1000);
+      }, 100);
     } else if (!isPlaying && interval) {
       clearInterval(interval);
     }
@@ -69,7 +69,9 @@ function Visualiser(props) {
       </div>
       <div className="DataViewContainer">
         <DataView
+            dataLength={dataLength}
             data={data}
+            maxData={maxData}
         />
       </div>
     </div>
