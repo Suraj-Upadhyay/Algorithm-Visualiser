@@ -1,0 +1,56 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Build and Deploy the React App to Github pages.
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+env:
+  CI: ""
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [20.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: git remote set-url origin git@github.com:Suraj-Upadhyay/Algorithm-Visualiser.git
+    - run: /usr/bin/git config --global --add url."https://${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github".insteadOf ssh://git@github
+    - run: /usr/bin/git config --global --add url."https://${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github".insteadOf https://github
+    - run: /usr/bin/git config --global --add url."https://${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}:x-oauth-basic@github".insteadOf git@github
+    - run: git remote set-url origin https://Suraj-Upadhyay:${{ secrets.GH_PERSONAL_ACCESS_TOKEN }}@github.com/Suraj-Upadhyay/Algorithm-Visualiser.git
+      shell: bash
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v4.0.0
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: 'npm'
+    - run: npm ci
+    - run: npm run build
+    - run : git config user.name github-actions
+      shell: bash
+    - run : git config user.email github-actions@github.com
+      shell: bash
+    - run : git --work-tree build add --all
+      shell: bash
+    - run : git commit -m "Automatic Build and Deploy run by GitHub Actions"
+      shell: bash
+    - run : git push origin HEAD:gh-pages --force
+      shell: bash
+    - run: npm run deploy
