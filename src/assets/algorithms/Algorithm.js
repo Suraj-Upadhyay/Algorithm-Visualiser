@@ -65,18 +65,19 @@ class ElementArray {
 }
 
 class Algorithm {
-  constructor(dataLength, maxData, algorithmName) {
+  constructor(dataLength, maxData) {
     this.elementArray = new ElementArray(dataLength, maxData);
-    this.algorithmName = algorithmName;
     this.totalSteps = 0;
     this.currentStep = 0;
     this.done = false;
-    this.algorithmObj = this.createAlgorithmObject();
+    this.algorithmObj = null;
   }
 
-  createAlgorithmObject() {
-    const algorithmClassName = constants.ALGO_IMPLEMENTATION_LIST['Selection Sort'];
-    return new algorithmClassName();
+  createAlgorithmObject(algorithmName) {
+    if (algorithmName === '') return false;
+    const algorithmClassName = constants.ALGO_IMPLEMENTATION_LIST[algorithmName];
+    this.algorithmObj = new algorithmClassName();
+    return true;
   }
 
   updateElementArray(newIndexArray) {

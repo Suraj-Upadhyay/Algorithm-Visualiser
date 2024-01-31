@@ -17,7 +17,7 @@ function DataBar(props) {
             const elementWidth = Math.min(totalWidth * 0.9 / dataLength, maxWidth);
             setElementWidth(elementWidth);
         },
-        []
+        [dataLength]
     );
 
     return (
