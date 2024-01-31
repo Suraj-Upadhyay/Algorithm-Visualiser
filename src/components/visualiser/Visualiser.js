@@ -6,9 +6,11 @@ import {Algorithm} from "../../assets/algorithms";
 
 function Visualiser(props) {
   const dataLength = props.dataBars;
+  // eslint-disable-next-line
   const delay = props.animationTime;
   const maxData = props.dataSpread;
   const algorithmName = props.algoUsed;
+  // eslint-disable-next-line
   const onAlgoDoneChange = props.onAlgoDoneChange;
 
   const algorithmObjectRef = useRef(null);
@@ -19,6 +21,8 @@ function Visualiser(props) {
 
   const onPlayControlAction = (event) => {
     const actionItemClicked = event.target.textContent;
+    let newStepNumber;
+    // eslint-disable-next-line
     switch(actionItemClicked) {
       case googleIconTexts.play:
         setIsPlaying(true);
@@ -27,11 +31,11 @@ function Visualiser(props) {
         setIsPlaying(false);
         break;
       case googleIconTexts.forward:
-        var newStepNumber = stepNumber + 1;
+        newStepNumber = stepNumber + 1;
         setStepNumber(newStepNumber);
         break;
       case googleIconTexts.backward:
-        var newStepNumber = stepNumber - 1;
+        newStepNumber = stepNumber - 1;
         setStepNumber(newStepNumber);
         break;
     }
@@ -42,6 +46,7 @@ function Visualiser(props) {
     algorithmObjectRef.current = new Algorithm(dataLength, maxData);
     algorithmObjectRef.current.createAlgorithmObject(algorithmName);
     setData(algorithmObjectRef.current.stepBackward());
+    // eslint-disable-next-line
   }, [dataLength, maxData]);
 
   useEffect(()=>{

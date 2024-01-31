@@ -83,10 +83,10 @@ class Algorithm {
   updateElementArray(newIndexArray) {
     for (let i = 0; i < newIndexArray.length; i++) {
       let {previousIndex, newIndex} = newIndexArray[i];
-      if (previousIndex == -1) continue;
+      if (previousIndex === -1) continue;
       for (let j = 0; j < this.elementArray.length; j++) {
         let currentElementIndex = this.elementArray.elementArray[j].getCurrentIndex(this.totalSteps - 1);
-        if (currentElementIndex == previousIndex) {
+        if (currentElementIndex === previousIndex) {
           this.elementArray.elementArray[j].addIndex(this.totalSteps, newIndex);
           break;
         }
@@ -116,7 +116,7 @@ class Algorithm {
   }
 
   stepBackward() {
-    if (this.currentStep == 0) {
+    if (this.currentStep === 0) {
       return this.elementArray.getElementsAtStep(0);
     }
     return this.elementArray.getElementsAtStep(--this.currentStep);

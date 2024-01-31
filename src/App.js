@@ -26,7 +26,7 @@ function App() {
   }
   const onAlgoUsedChange = (event) => {
     let newAlgoUsed = event.target.textContent;
-    newAlgoUsed = newAlgoUsed == 'None' ? '' : newAlgoUsed;
+    newAlgoUsed = newAlgoUsed === 'None' ? '' : newAlgoUsed;
     setAlgoUsed(newAlgoUsed);
   };
 
@@ -34,7 +34,7 @@ function App() {
     <div id="AppBody">
       <div id="AppHeader">
         <div id="MyProfile">
-          <a href="https://github.com/Suraj-Upadhyay" target="_blank">github.com/Suraj-Upadhyay</a>
+          <a href="https://github.com/Suraj-Upadhyay" target="_blank" rel="noreferrer">github.com/Suraj-Upadhyay</a>
         </div>
         <div id="Title">
           Algorithm Visualiser
