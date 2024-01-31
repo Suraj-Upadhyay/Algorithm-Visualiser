@@ -65,27 +65,28 @@ class ElementArray {
 }
 
 class Algorithm {
-  constructor(dataLength, maxData, algorithmName) {
+  constructor(dataLength, maxData) {
     this.elementArray = new ElementArray(dataLength, maxData);
-    this.algorithmName = algorithmName;
     this.totalSteps = 0;
     this.currentStep = 0;
     this.done = false;
-    this.algorithmObj = this.createAlgorithmObject();
+    this.algorithmObj = null;
   }
 
-  createAlgorithmObject() {
-    const algorithmClassName = constants.ALGO_IMPLEMENTATION_LIST['Selection Sort'];
-    return new algorithmClassName();
+  createAlgorithmObject(algorithmName) {
+    if (algorithmName === '') return false;
+    const algorithmClassName = constants.ALGO_IMPLEMENTATION_LIST[algorithmName];
+    this.algorithmObj = new algorithmClassName();
+    return true;
   }
 
   updateElementArray(newIndexArray) {
     for (let i = 0; i < newIndexArray.length; i++) {
       let {previousIndex, newIndex} = newIndexArray[i];
-      if (previousIndex == -1) continue;
+      if (previousIndex === -1) continue;
       for (let j = 0; j < this.elementArray.length; j++) {
         let currentElementIndex = this.elementArray.elementArray[j].getCurrentIndex(this.totalSteps - 1);
-        if (currentElementIndex == previousIndex) {
+        if (currentElementIndex === previousIndex) {
           this.elementArray.elementArray[j].addIndex(this.totalSteps, newIndex);
           break;
         }
@@ -115,7 +116,7 @@ class Algorithm {
   }
 
   stepBackward() {
-    if (this.currentStep == 0) {
+    if (this.currentStep === 0) {
       return this.elementArray.getElementsAtStep(0);
     }
     return this.elementArray.getElementsAtStep(--this.currentStep);

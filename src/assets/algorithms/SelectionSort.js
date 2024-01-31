@@ -6,7 +6,7 @@ class SelectionSort {
 
   getElementAtIndex(elementArray, index) {
     for (let i = 0; i < elementArray.length; i++) {
-      if (elementArray[i].index == index) return elementArray[i].data;
+      if (elementArray[i].index === index) return elementArray[i].data;
     }
   }
 
@@ -16,7 +16,7 @@ class SelectionSort {
       if (this.getElementAtIndex(elementArray, i) < this.getElementAtIndex(elementArray, minimum_index))
         minimum_index = i;
     let newIndex = []
-    if (minimum_index == this.currentSortingIndex) {
+    if (minimum_index === this.currentSortingIndex) {
       newIndex = [{previousIndex: -1, newIndex: -1}];
     }
     else {
