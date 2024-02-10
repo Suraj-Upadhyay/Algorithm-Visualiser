@@ -7,6 +7,8 @@ Here's a snpashot of the project:
 
 ![The Project's UI Design](./DEMONSTRATIONS/projectUIDesign.png)
 
+And here's the link to the deployed website: [Algorithm Visualiser](https://suraj-upadhyay.github.io/Algorithm-Visualiser/)
+
 ## Objective
 
 I have great ideas and vision for this project to become a single source for learning the ins and outs of Algorithms and Data Structures. The project aims to provide visual help for learners to understand Algorithms and the Data Structures they use.
