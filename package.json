@@ -1,7 +1,7 @@
 {
   "name": "algorithm_visualiser",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "homepage": "https://Suraj-Upadhyay.github.io/Algorithm-Visualiser",
   "dependencies": {
     "react": "^18.2.0",
