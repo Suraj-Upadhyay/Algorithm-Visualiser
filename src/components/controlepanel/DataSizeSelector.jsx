@@ -1,5 +1,5 @@
 import './DataSizeSelector.css';
-import Slider from '../Slider';
+import Slider from './Slider';
 
 function DataSizeSelector(props) {
 	return (

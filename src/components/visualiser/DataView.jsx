@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './DataView.css';
-import DataBar from './components';
+import DataBar from './DataBar';
 
 function DataView(props) {
 	const data = props.data;

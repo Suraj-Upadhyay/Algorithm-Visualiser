@@ -1,6 +1,7 @@
 import "./Visualiser.css";
 import {useEffect, useRef, useState} from 'react';
-import {PlayControl, DataView} from './components';
+import DataView from "./DataView";
+import PlayControl from "./PlayControl";
 import { googleIconTexts } from "../../assets/constants";
 import {Algorithm} from "../../assets/algorithms";
 

@@ -1,8 +1,8 @@
 import './PlayControl.css';
-import { PauseAction, PlayAction,
- 		 StepForwardAction,
-		 StepBackwardAction}
-from './components';
+import PauseAction from './PauseAction';
+import PlayAction from './PlayAction';
+import StepBackwardAction from './StepBackwardAction';
+import StepForwardAction from './StepForwardAction';
 
 function PlayControl(props) {
 	return (

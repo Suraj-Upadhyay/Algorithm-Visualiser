@@ -1,9 +1,8 @@
 import "./ControlPanel.css";
-import { AlgorithmSelector,
-         DataLengthSelector,
-         DataSizeSelector,
-         TimeLengthSelector }
-from "./components";
+import AlgorithmSelector from "./AlgorithmSelector";
+import DataLengthSelector from "./DataLengthSelector";
+import DataSizeSelector from "./DataSizeSelector";
+import TimeLengthSelector from "./TimeLengthSelector";
 
 function ControlPanel(props) {
     const controlPanelConstants = props.constants;

@@ -1,5 +1,5 @@
 import './TimeLengthSelector.css';
-import Slider from '../Slider';
+import Slider from './Slider';
 
 function TimeLengthSelector(props) {
 	return (
