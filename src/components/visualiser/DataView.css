@@ -1,10 +1,10 @@
 .DataView {
-    display: grid;
-    justify-content: space-evenly;
-    align-items: end;
-    position: relative;
-    width: 95%;
-    height: 94%;
-    margin: auto;
-    bottom: -2px;
+  display: grid;
+  justify-content: space-evenly;
+  align-items: end;
+  position: relative;
+  width: 95%;
+  height: 94%;
+  margin: auto;
+  bottom: -2px;
 }

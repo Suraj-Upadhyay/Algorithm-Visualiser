@@ -1,9 +1,9 @@
 import "./Visualiser.css";
-import {useEffect, useRef, useState} from 'react';
+import { useEffect, useRef, useState } from "react";
 import DataView from "./DataView";
 import PlayControl from "./PlayControl";
 import { googleIconTexts } from "../../assets/constants";
-import {Algorithm} from "../../assets/algorithms";
+import { Algorithm } from "../../assets/algorithms";
 
 function Visualiser(props) {
   const dataLength = props.dataBars;
@@ -20,16 +20,18 @@ function Visualiser(props) {
   const [stepNumber, setStepNumber] = useState(0);
   const [data, setData] = useState([]);
 
-  const onPlayControlAction = (event) => {
+  const onPlayControlAction = event => {
     const actionItemClicked = event.target.textContent;
     let newStepNumber;
     // eslint-disable-next-line
-    switch(actionItemClicked) {
+    switch (actionItemClicked) {
       case googleIconTexts.play:
         setIsPlaying(true);
+        props.setPlaying(true);
         break;
       case googleIconTexts.pause:
         setIsPlaying(false);
+        props.setPlaying(false);
         break;
       case googleIconTexts.forward:
         newStepNumber = stepNumber + 1;
@@ -42,54 +44,59 @@ function Visualiser(props) {
     }
   };
 
-  useEffect(()=>{
-    console.log("creating new algorithm")
-    algorithmObjectRef.current = new Algorithm(dataLength, maxData);
-    algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-    setData(algorithmObjectRef.current.stepBackward());
-    // eslint-disable-next-line
-  }, [dataLength, maxData]);
+  useEffect(
+    () => {
+      console.log("creating new algorithm");
+      algorithmObjectRef.current = new Algorithm(dataLength, maxData);
+      algorithmObjectRef.current.createAlgorithmObject(algorithmName);
+      setData(algorithmObjectRef.current.stepBackward());
+      // eslint-disable-next-line
+    },
+    [dataLength, maxData]
+  );
 
-  useEffect(()=>{
-    algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-  }, [algorithmName]);
+  useEffect(
+    () => {
+      algorithmObjectRef.current.createAlgorithmObject(algorithmName);
+    },
+    [algorithmName]
+  );
 
-  useEffect(() => {
-    let interval = null;
+  useEffect(
+    () => {
+      let interval = null;
 
-    if (isPlaying) {
-      // Set up the interval
-      interval = setInterval(() => {
-        let data = algorithmObjectRef.current.stepForward();
-        console.log(data);
-        setData(data);
-      }, 100);
-    } else if (!isPlaying && interval) {
-      clearInterval(interval);
-    }
-
-    // Clean-up function
-    return () => {
-      if (interval) {
+      if (isPlaying) {
+        // Set up the interval
+        interval = setInterval(() => {
+          let data = algorithmObjectRef.current.stepForward();
+          console.log(data);
+          setData(data);
+        }, 100);
+      } else if (!isPlaying && interval) {
         clearInterval(interval);
       }
-    };
-  }, [isPlaying]);
+
+      // Clean-up function
+      return () => {
+        if (interval) {
+          clearInterval(interval);
+        }
+      };
+    },
+    [isPlaying]
+  );
 
   return (
     <div className="Visualiser">
       <div className="PlayControlContainer">
         <PlayControl
-            googleIconText={googleIconTexts}
-            onPlayControlAction={onPlayControlAction}
+          googleIconText={googleIconTexts}
+          onPlayControlAction={onPlayControlAction}
         />
       </div>
       <div className="DataViewContainer">
-        <DataView
-            dataLength={dataLength}
-            data={data}
-            maxData={maxData}
-        />
+        <DataView dataLength={dataLength} data={data} maxData={maxData} />
       </div>
     </div>
   );
