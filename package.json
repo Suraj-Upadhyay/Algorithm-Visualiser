@@ -2,6 +2,7 @@
   "name": "algorithm_visualiser",
   "version": "0.1.0",
   "private": false,
+  "type": "module",
   "homepage": "https://Suraj-Upadhyay.github.io/Algorithm-Visualiser",
   "dependencies": {
     "react": "^18.2.0",
@@ -33,7 +34,10 @@
   },
   "devDependencies": {
     "@vitejs/plugin-react": "^4.2.1",
+    "autoprefixer": "^10.4.19",
     "gh-pages": "^6.1.1",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.1",
     "vite": "^5.1.4"
   }
 }
