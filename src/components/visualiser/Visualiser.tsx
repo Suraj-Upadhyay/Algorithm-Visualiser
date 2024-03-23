@@ -55,7 +55,6 @@ function Visualiser(props: IVisualiserParams) {
 
   useEffect(
     () => {
-      console.log("creating new algorithm");
       algorithmObjectRef.current = new Algorithm(dataLength, maxData);
       algorithmObjectRef.current.createAlgorithmObject(algorithmName);
       setData(algorithmObjectRef.current.stepBackward());
@@ -79,7 +78,6 @@ function Visualiser(props: IVisualiserParams) {
         // Set up the interval
         interval = setInterval(() => {
           let data = algorithmObjectRef.current?.stepForward();
-          console.log(data);
           data && setData(data);
         }, 100);
       } else if (!isPlaying && interval) {
