@@ -1,4 +1,4 @@
-import { SelectionSort } from "./algorithms/index.js";
+import { SelectionSort } from "./algorithms/index";
 
 export const MINDATABARS = 5;
 export const MAXDATABARS = 100;

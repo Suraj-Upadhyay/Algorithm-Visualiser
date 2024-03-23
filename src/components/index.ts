@@ -1,4 +1,4 @@
 import ControlPanel from "./controlepanel";
 import Visualiser from "./visualiser";
 
-export {ControlPanel, Visualiser};
+export { ControlPanel, Visualiser };

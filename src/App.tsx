@@ -4,23 +4,26 @@ import { ControlPanel, Visualiser } from "./components";
 import * as constants from "./assets/constants";
 
 function App() {
-  const [dataBars, setDataBars] = useState(constants.DEFAULTDATABARS);
-  const [animationTime, setAnimationTime] = useState(constants.DEFAULTTIME);
-  const [dataSpread, setDataSpread] = useState(constants.DEFAULTDATASPREAD);
-  const [playing, setPlaying] = useState(false);
-  const [algoUsed, setAlgoUsed] = useState("");
-  const [algoDone, setAlgoDone] = useState(false);
+  const [dataBars, setDataBars] = useState<number>(constants.DEFAULTDATABARS);
+  const [animationTime, setAnimationTime] = useState<number>(constants.DEFAULTTIME);
+  const [dataSpread, setDataSpread] = useState<number>(constants.DEFAULTDATASPREAD);
+  const [playing, setPlaying] = useState<boolean>(false);
+  const [algoUsed, setAlgoUsed] = useState<string>("");
+  const [algoDone, setAlgoDone] = useState<boolean>(false);
 
-  const onDataBarsChange = event => {
-    setDataBars(event.target.value);
+  const onDataBarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newDataBarValue = +event.target.value;
+    newDataBarValue && setDataBars(newDataBarValue);
   };
 
-  const onAnimationTimeChange = event => {
-    setAnimationTime(event.target.value);
+  const onAnimationTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newAnimationTime = +event.target.value;
+    newAnimationTime && setAnimationTime(newAnimationTime);
   };
 
-  const onDataSpreadChange = event => {
-    setDataSpread(event.target.value);
+  const onDataSpreadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const newSpreadChange = +event.target.value;
+    newSpreadChange && setDataSpread(newSpreadChange);
   };
 
   const onAlgoDoneChange = () => {
@@ -28,10 +31,10 @@ function App() {
     setAlgoDone(newAlgoDone);
   };
 
-  const onAlgoUsedChange = event => {
-    let newAlgoUsed = event.target.textContent;
+  const onAlgoUsedChange = (event: React.MouseEvent<HTMLLIElement>) => {
+    let newAlgoUsed = (event.target as HTMLLIElement).textContent;
     newAlgoUsed = newAlgoUsed === "None" ? "" : newAlgoUsed;
-    setAlgoUsed(newAlgoUsed);
+    newAlgoUsed && setAlgoUsed(newAlgoUsed);
   };
 
   return (

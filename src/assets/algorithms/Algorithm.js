@@ -1,4 +1,4 @@
-import * as constants from "../constants.js";
+import * as constants from "../constants";
 
 class Element {
   constructor(index, data) {
