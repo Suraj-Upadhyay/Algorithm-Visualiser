@@ -52,6 +52,9 @@ export const controlPanelConstants = {
   ALGOLIST: ALGO_IMPLEMENTATION_LIST
 };
 
+export type controlPanelConstantsType = typeof controlPanelConstants;
+export type algorithmListType = typeof ALGO_IMPLEMENTATION_LIST;
+
 export const googleIconTexts = {
   play: "play_circle",
   pause: "pause",

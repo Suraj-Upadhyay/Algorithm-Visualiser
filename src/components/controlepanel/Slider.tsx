@@ -1,6 +1,13 @@
 import "./Slider.css";
 
-function Slider(props) {
+interface ISliderParams {
+  minData: number,
+  maxData: number,
+  defaultData: number,
+  onDataChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+function Slider(props: ISliderParams) {
   const minData = props.minData;
   const maxData = props.maxData;
   const defaultData = props.defaultData;

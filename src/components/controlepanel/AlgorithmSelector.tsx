@@ -1,6 +1,13 @@
+import { algorithmListType } from "../../assets/constants";
 import "./AlgorithmSelector.css";
 
-function AlgorithmSelector(props) {
+interface IAlgorithmSelectorParams {
+  algoList: algorithmListType,
+  algoUsed: string,
+  onAlgoUsedChange: (event: React.MouseEvent<HTMLLIElement>) => void
+}
+
+function AlgorithmSelector(props: IAlgorithmSelectorParams) {
   const algoList = props.algoList;
   const algoUsed = props.algoUsed ? props.algoUsed : "Select Aglorithm";
   const onAlgoUsedChange = props.onAlgoUsedChange;

@@ -1,7 +1,14 @@
 import "./DataLengthSelector.css";
 import Slider from "./Slider";
 
-function DataLengthSelector(props) {
+interface IDataLengthSelectorParams {
+  minDataBars: number,
+  maxDataBars: number,
+  defaultDataBars: number,
+  onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+function DataLengthSelector(props: IDataLengthSelectorParams) {
   return (
     <div className="DataLengthSelector">
       <p>Generate Data</p>
