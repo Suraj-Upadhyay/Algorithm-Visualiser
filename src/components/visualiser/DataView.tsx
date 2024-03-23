@@ -2,7 +2,16 @@ import { useEffect, useState } from "react";
 import "./DataView.css";
 import DataBar from "./DataBar";
 
-function DataView(props) {
+interface IDataViewParams {
+  dataLength: number;
+  data: {
+    data: number;
+    index?: number;
+  }[];
+  maxData: number;
+}
+
+function DataView(props: IDataViewParams) {
   const data = props.data;
   const dataLength = props.dataLength;
   const maxData = props.maxData;
@@ -10,7 +19,7 @@ function DataView(props) {
   let gridColumnString = "auto ".repeat(dataLength);
 
   useEffect(() => {
-    setHeight(document.querySelector(".DataView").offsetHeight);
+    setHeight((document.querySelector(".DataView") as HTMLElement).offsetHeight);
   }, []);
 
   return (

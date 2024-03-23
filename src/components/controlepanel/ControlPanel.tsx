@@ -1,10 +1,22 @@
 import "./ControlPanel.css";
+import { controlPanelConstantsType } from "../../assets/constants";
 import AlgorithmSelector from "./AlgorithmSelector";
 import DataLengthSelector from "./DataLengthSelector";
 import DataSizeSelector from "./DataSizeSelector";
 import TimeLengthSelector from "./TimeLengthSelector";
 
-function ControlPanel(props) {
+interface IControlPanelParams {
+  constants: controlPanelConstantsType,
+  algoUsed: string,
+  algoDone: boolean,
+  playing: boolean,
+  onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onDataSpreadChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+  onAlgoUsedChange: (event: React.MouseEvent<HTMLLIElement>) => void
+}
+
+function ControlPanel(props: IControlPanelParams) {
   const controlPanelConstants = props.constants;
   return (
     <div className={`ControlPanel relative ${props.playing && "disabled"}`}>

@@ -5,7 +5,16 @@ import PlayControl from "./PlayControl";
 import { googleIconTexts } from "../../assets/constants";
 import { Algorithm } from "../../assets/algorithms";
 
-function Visualiser(props) {
+interface IVisualiserParams {
+  dataBars: number,
+  animationTime: number,
+  dataSpread: number,
+  algoUsed: string,
+  onAlgoDoneChange: () => void,
+  setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+function Visualiser(props: IVisualiserParams) {
   const dataLength = props.dataBars;
   // eslint-disable-next-line
   const delay = props.animationTime;
@@ -14,14 +23,14 @@ function Visualiser(props) {
   // eslint-disable-next-line
   const onAlgoDoneChange = props.onAlgoDoneChange;
 
-  const algorithmObjectRef = useRef(null);
+  const algorithmObjectRef = useRef<Algorithm | null>(null);
 
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [stepNumber, setStepNumber] = useState(0);
-  const [data, setData] = useState([]);
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const [stepNumber, setStepNumber] = useState<number>(0);
+  const [data, setData] = useState<{ data: number; index?: number }[]>([]);
 
-  const onPlayControlAction = event => {
-    const actionItemClicked = event.target.textContent;
+  const onPlayControlAction = (event: React.MouseEvent<HTMLDivElement>) => {
+    const actionItemClicked = (event.target as HTMLElement).textContent;
     let newStepNumber;
     // eslint-disable-next-line
     switch (actionItemClicked) {
@@ -57,21 +66,21 @@ function Visualiser(props) {
 
   useEffect(
     () => {
-      algorithmObjectRef.current.createAlgorithmObject(algorithmName);
+      algorithmObjectRef.current && algorithmObjectRef.current.createAlgorithmObject(algorithmName);
     },
     [algorithmName]
   );
 
   useEffect(
     () => {
-      let interval = null;
+      let interval: NodeJS.Timeout | null = null;
 
       if (isPlaying) {
         // Set up the interval
         interval = setInterval(() => {
-          let data = algorithmObjectRef.current.stepForward();
+          let data = algorithmObjectRef.current?.stepForward();
           console.log(data);
-          setData(data);
+          data && setData(data);
         }, 100);
       } else if (!isPlaying && interval) {
         clearInterval(interval);

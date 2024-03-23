@@ -1,7 +1,14 @@
 import "./DataSizeSelector.css";
 import Slider from "./Slider";
 
-function DataSizeSelector(props) {
+interface IDataSizeSelectorParams {
+  minDataSize: number,
+  maxDataSize: number,
+  defaultDataSize: number,
+  onDataSizeChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
+}
+
+function DataSizeSelector(props: IDataSizeSelectorParams) {
   return (
     <div className="DataSizeSelector">
       <p>Maximum Data</p>

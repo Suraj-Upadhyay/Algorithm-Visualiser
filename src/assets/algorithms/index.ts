@@ -1,4 +1,4 @@
-import SelectionSort from "./SelectionSort.js";
-import Algorithm from "./Algorithm.js";
+import SelectionSort from "./SelectionSort";
+import { Algorithm } from "./Algorithm";
 
 export { Algorithm, SelectionSort };

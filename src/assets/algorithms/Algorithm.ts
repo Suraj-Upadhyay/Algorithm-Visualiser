@@ -1,18 +1,25 @@
 import * as constants from "../constants";
+import { IAlgorithmImplementation } from "./Algorithm.type";
 
 class Element {
-  constructor(index, data) {
+  data: number;
+  length: number;
+  indexArray: number[];
+  stepArray: number[];
+
+  constructor(index: number, data: number) {
     this.data = data;
     this.indexArray = [];
     this.stepArray = [];
+    this.length = 0;
     this.addIndex(0, index);
   }
 
-  getTopIndex() {
+  getTopIndex(): number | undefined {
     return this.indexArray.at(-1); // Solution to Bug #3 this.indexArray[this.stepArray.at(-1)];
   }
 
-  getCurrentIndex(stepNumber) {
+  getCurrentIndex(stepNumber: number): number {
     let latestStepNumber = 0;
     for (let i = this.stepArray.length - 1; i >= 0; i--) {
       if (stepNumber >= this.stepArray[i]) {
@@ -23,7 +30,7 @@ class Element {
     return this.indexArray[latestStepNumber];
   }
 
-  addIndex(stepCount, newIndex) {
+  addIndex(stepCount: number, newIndex: number): void {
     this.indexArray.push(newIndex); // Solution to Bug #2 this.indexArray[stepCount] = newIndex;
     this.stepArray.push(stepCount);
     this.length++;
@@ -31,13 +38,17 @@ class Element {
 }
 
 class ElementArray {
-  constructor(dataLength, maxData) {
+  length: number;
+  maxData: number;
+  elementArray: Element[];
+
+  constructor(dataLength: number, maxData: number) {
     this.length = dataLength;
     this.maxData = maxData;
     this.elementArray = this.generateRandomElementArray();
   }
 
-  generateRandomElementArray() {
+  generateRandomElementArray(): Element[] {
     let randomNumberArray = Array.from({ length: this.length }, () =>
       Math.floor(Math.random() * this.maxData)
     );
@@ -47,13 +58,13 @@ class ElementArray {
     return randomElementArray;
   }
 
-  getElementsAtStep(stepNumber) {
+  getElementsAtStep(stepNumber: number): { data: number; index: number }[] {
     return this.elementArray.map(element => {
       return { data: element.data, index: element.getCurrentIndex(stepNumber) };
     });
   }
 
-  getElementsAtCurrentStep() {
+  getElementsAtCurrentStep(): { data: number; index?: number }[] {
     return this.elementArray.map(element => {
       return { data: element.data, index: element.getTopIndex() };
     });
@@ -61,7 +72,13 @@ class ElementArray {
 }
 
 class Algorithm {
-  constructor(dataLength, maxData) {
+  elementArray: ElementArray;
+  totalSteps: number;
+  currentStep: number;
+  done: boolean;
+  algorithmObj: null | IAlgorithmImplementation;
+
+  constructor(dataLength: number, maxData: number) {
     this.elementArray = new ElementArray(dataLength, maxData);
     this.totalSteps = 0;
     this.currentStep = 0;
@@ -69,15 +86,18 @@ class Algorithm {
     this.algorithmObj = null;
   }
 
-  createAlgorithmObject(algorithmName) {
+  createAlgorithmObject(algorithmName: string) {
     if (algorithmName === "") return false;
     const algorithmClassName =
       constants.ALGO_IMPLEMENTATION_LIST[algorithmName];
-    this.algorithmObj = new algorithmClassName();
+    if (algorithmClassName)
+      this.algorithmObj = new algorithmClassName();
     return true;
   }
 
-  updateElementArray(newIndexArray) {
+  updateElementArray(
+    newIndexArray: { previousIndex: number; newIndex: number }[]
+  ): void {
     for (let i = 0; i < newIndexArray.length; i++) {
       let { previousIndex, newIndex } = newIndexArray[i];
       if (previousIndex === -1) continue;
@@ -93,8 +113,8 @@ class Algorithm {
     }
   }
 
-  step() {
-    if (!this.done) {
+  step(): boolean {
+    if (!this.done && this.algorithmObj) {
       this.totalSteps++;
       this.currentStep++;
       let { newIndex, done } = this.algorithmObj.step(
@@ -106,7 +126,7 @@ class Algorithm {
     return !this.done;
   }
 
-  stepForward() {
+  stepForward(): { data: number; index?: number }[] {
     this.currentStep++;
     if (this.currentStep <= this.totalSteps) {
       return this.elementArray.getElementsAtStep(this.currentStep);
@@ -116,7 +136,7 @@ class Algorithm {
     return this.elementArray.getElementsAtCurrentStep();
   }
 
-  stepBackward() {
+  stepBackward(): { data: number; index?: number }[] {
     if (this.currentStep === 0) {
       return this.elementArray.getElementsAtStep(0);
     }
@@ -124,19 +144,4 @@ class Algorithm {
   }
 }
 
-export default Algorithm;
-
-// let algo_obj = new Algorithm(10, 50, 'Selection Sort');
-// while(!algo_obj.done) {
-//   let indexOrderedArray = algo_obj.stepForward();
-//   indexOrderedArray.sort((item1, item2) => item1.index - item2.index);
-//   console.log(indexOrderedArray);
-// }
-
-// Debigging info.
-// console.log("----");
-// this.elementArray.elementArray
-// .forEach(
-//    (element)=>
-//      console.log(element.data, element.indexArray, element.stepArray
-//  );
+export { Element, ElementArray, Algorithm };

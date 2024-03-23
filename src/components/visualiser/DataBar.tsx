@@ -1,9 +1,17 @@
 import { useEffect, useState } from "react";
 import "./DataBar.css";
 
-function DataBar(props) {
+interface IDataBarParams {
+  data: number;
+  index: number | undefined;
+  dataLength: number;
+  maxData: number;
+  parentHeight: number;
+}
+
+function DataBar(props: IDataBarParams) {
   const data = props.data;
-  const index = props.index + 1;
+  const index = props.index && props.index + 1;
   const dataLength = props.dataLength;
   const maxData = props.maxData;
   const parentHeight = props.parentHeight;
@@ -13,7 +21,7 @@ function DataBar(props) {
 
   useEffect(
     () => {
-      const totalWidth = document.querySelector(".DataView").offsetWidth;
+      const totalWidth = (document.querySelector(".DataView") as HTMLElement).offsetWidth;
       const elementWidth = Math.min(totalWidth * 0.9 / dataLength, maxWidth);
       setElementWidth(elementWidth);
     },

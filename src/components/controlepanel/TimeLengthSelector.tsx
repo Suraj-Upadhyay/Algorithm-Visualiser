@@ -1,7 +1,14 @@
 import "./TimeLengthSelector.css";
 import Slider from "./Slider";
 
-function TimeLengthSelector(props) {
+interface ITimeLengthSelectorParams {
+  minTime: number,
+  maxTime: number,
+  defaultTime: number,
+  onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+}
+
+function TimeLengthSelector(props: ITimeLengthSelectorParams) {
   return (
     <div className="TimeLengthSelector">
       <p>Animation Time</p>

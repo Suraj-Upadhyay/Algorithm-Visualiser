@@ -1,3 +1,4 @@
+import { AlgorithmImplementation } from "./algorithms/Algorithm.type";
 import { SelectionSort } from "./algorithms/index";
 
 export const MINDATABARS = 5;
@@ -10,7 +11,9 @@ export const MINDATASPREAD = 50;
 export const MAXDATASPREAD = 1000;
 export const DEFAULTDATASPREAD = MINDATASPREAD;
 
-export const ALGO_IMPLEMENTATION_LIST = {
+export const ALGO_IMPLEMENTATION_LIST: {
+  [key: string]: AlgorithmImplementation | null;
+} = {
   None: null,
   "Selection Sort": SelectionSort,
   "Bubble Sort": null,
@@ -52,7 +55,14 @@ export const controlPanelConstants = {
   ALGOLIST: ALGO_IMPLEMENTATION_LIST
 };
 
-export const googleIconTexts = {
+export type controlPanelConstantsType = typeof controlPanelConstants;
+export type algorithmListType = typeof ALGO_IMPLEMENTATION_LIST;
+
+export interface IGoogleIconTexts {
+  [key: string]: string;
+}
+
+export const googleIconTexts: IGoogleIconTexts = {
   play: "play_circle",
   pause: "pause",
   forward: "arrow_forward_ios",
