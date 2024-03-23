@@ -58,7 +58,11 @@ export const controlPanelConstants = {
 export type controlPanelConstantsType = typeof controlPanelConstants;
 export type algorithmListType = typeof ALGO_IMPLEMENTATION_LIST;
 
-export const googleIconTexts = {
+export interface IGoogleIconTexts {
+  [key: string]: string;
+}
+
+export const googleIconTexts: IGoogleIconTexts = {
   play: "play_circle",
   pause: "pause",
   forward: "arrow_forward_ios",

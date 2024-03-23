@@ -3,8 +3,14 @@ import PauseAction from "./PauseAction";
 import PlayAction from "./PlayAction";
 import StepBackwardAction from "./StepBackwardAction";
 import StepForwardAction from "./StepForwardAction";
+import { IGoogleIconTexts } from "../../assets/constants";
 
-function PlayControl(props) {
+interface IPlayControlParams {
+  googleIconText: IGoogleIconTexts;
+  onPlayControlAction: (event: React.MouseEvent<HTMLDivElement>) => void;
+}
+
+function PlayControl(props: IPlayControlParams) {
   return (
     <div className="PlayControl">
       <div>

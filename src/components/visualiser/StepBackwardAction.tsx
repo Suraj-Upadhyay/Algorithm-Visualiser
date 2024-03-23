@@ -1,6 +1,11 @@
 import "./StepBackwardAction.css";
 
-function StepBackwardAction(props) {
+interface IStepBackwardActionParams {
+  googleIcon: string;
+  onPlayControlAction: (event: React.MouseEvent<HTMLDivElement>) => void;
+}
+
+function StepBackwardAction(props: IStepBackwardActionParams) {
   return (
     <div className="StepBackwardAction" onClick={props.onPlayControlAction}>
       <span className="material-symbols-outlined">
