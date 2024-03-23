@@ -1,3 +1,4 @@
+import { AlgorithmImplementation } from "./algorithms/Algorithm.type";
 import { SelectionSort } from "./algorithms/index";
 
 export const MINDATABARS = 5;
@@ -10,7 +11,9 @@ export const MINDATASPREAD = 50;
 export const MAXDATASPREAD = 1000;
 export const DEFAULTDATASPREAD = MINDATASPREAD;
 
-export const ALGO_IMPLEMENTATION_LIST = {
+export const ALGO_IMPLEMENTATION_LIST: {
+  [key: string]: AlgorithmImplementation | null;
+} = {
   None: null,
   "Selection Sort": SelectionSort,
   "Bubble Sort": null,
