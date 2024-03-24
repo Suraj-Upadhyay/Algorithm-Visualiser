@@ -14,7 +14,7 @@ class SelectionSort implements IAlgorithmImplementation {
       data: number;
       index?: number;
     }[],
-    index: number
+    index: number,
   ) {
     for (let i = 0; i < elementArray.length; i++) {
       if (elementArray[i].index === index) return elementArray[i].data;
@@ -25,14 +25,14 @@ class SelectionSort implements IAlgorithmImplementation {
     elementArray: {
       data: number;
       index?: number;
-    }[]
+    }[],
   ) {
     let minimum_index = this.currentSortingIndex;
     for (let i = this.currentSortingIndex + 1; i < elementArray.length; i++) {
       const currentElement = this.getElementAtIndex(elementArray, i);
       const minimumElement = this.getElementAtIndex(
         elementArray,
-        minimum_index
+        minimum_index,
       );
       if (currentElement && minimumElement && currentElement < minimumElement) {
         minimum_index = i;
@@ -44,7 +44,7 @@ class SelectionSort implements IAlgorithmImplementation {
     } else {
       newIndex = [
         { previousIndex: this.currentSortingIndex, newIndex: minimum_index },
-        { previousIndex: minimum_index, newIndex: this.currentSortingIndex }
+        { previousIndex: minimum_index, newIndex: this.currentSortingIndex },
       ];
     }
     this.currentSortingIndex++;

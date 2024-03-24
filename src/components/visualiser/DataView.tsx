@@ -19,12 +19,14 @@ function DataView(props: IDataViewParams) {
   let gridColumnString = "auto ".repeat(dataLength);
 
   useEffect(() => {
-    setHeight((document.querySelector(".DataView") as HTMLElement).offsetHeight);
+    setHeight(
+      (document.querySelector(".DataView") as HTMLElement).offsetHeight,
+    );
   }, []);
 
   return (
     <div className="DataView" style={{ gridTemplateColumns: gridColumnString }}>
-      {data.map((item, index) =>
+      {data.map((item, index) => (
         <DataBar
           key={index}
           data={item.data}
@@ -33,7 +35,7 @@ function DataView(props: IDataViewParams) {
           maxData={maxData}
           parentHeight={height}
         />
-      )}
+      ))}
     </div>
   );
 }

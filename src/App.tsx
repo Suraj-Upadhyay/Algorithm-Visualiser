@@ -5,8 +5,12 @@ import * as constants from "./assets/constants";
 
 function App() {
   const [dataBars, setDataBars] = useState<number>(constants.DEFAULTDATABARS);
-  const [animationTime, setAnimationTime] = useState<number>(constants.DEFAULTTIME);
-  const [dataSpread, setDataSpread] = useState<number>(constants.DEFAULTDATASPREAD);
+  const [animationTime, setAnimationTime] = useState<number>(
+    constants.DEFAULTTIME,
+  );
+  const [dataSpread, setDataSpread] = useState<number>(
+    constants.DEFAULTDATASPREAD,
+  );
   const [playing, setPlaying] = useState<boolean>(false);
   const [algoUsed, setAlgoUsed] = useState<string>("None");
 
@@ -15,7 +19,9 @@ function App() {
     newDataBarValue && setDataBars(newDataBarValue);
   };
 
-  const onAnimationTimeChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onAnimationTimeChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const newAnimationTime = +event.target.value;
     newAnimationTime && setAnimationTime(newAnimationTime);
   };
@@ -28,7 +34,11 @@ function App() {
   const onAlgoUsedChange = (event: React.MouseEvent<HTMLLIElement>) => {
     let newAlgoUsed = (event.target as HTMLLIElement).textContent;
     newAlgoUsed = newAlgoUsed === "None" ? "None" : newAlgoUsed;
-    if (newAlgoUsed && (constants.ALGO_IMPLEMENTATION_LIST[newAlgoUsed] || newAlgoUsed === "None"))
+    if (
+      newAlgoUsed &&
+      (constants.ALGO_IMPLEMENTATION_LIST[newAlgoUsed] ||
+        newAlgoUsed === "None")
+    )
       setAlgoUsed(newAlgoUsed);
   };
 

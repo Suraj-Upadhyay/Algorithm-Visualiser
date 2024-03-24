@@ -15,18 +15,16 @@ function DataBar(props: IDataBarParams) {
   const dataLength = props.dataLength;
   const maxData = props.maxData;
   const parentHeight = props.parentHeight;
-  const elementHeight = parentHeight * data / maxData;
+  const elementHeight = (parentHeight * data) / maxData;
   const [elementWidth, setElementWidth] = useState(0);
   const maxWidth = 30;
 
-  useEffect(
-    () => {
-      const totalWidth = (document.querySelector(".DataView") as HTMLElement).offsetWidth;
-      const elementWidth = Math.min(totalWidth * 0.9 / dataLength, maxWidth);
-      setElementWidth(elementWidth);
-    },
-    [dataLength]
-  );
+  useEffect(() => {
+    const totalWidth = (document.querySelector(".DataView") as HTMLElement)
+      .offsetWidth;
+    const elementWidth = Math.min((totalWidth * 0.9) / dataLength, maxWidth);
+    setElementWidth(elementWidth);
+  }, [dataLength]);
 
   return (
     <div
@@ -36,7 +34,7 @@ function DataBar(props: IDataBarParams) {
         width: elementWidth,
         backgroundColor: "white",
         gridColumn: `${index} / span 1`,
-        gridRow: "1 / span 1"
+        gridRow: "1 / span 1",
       }}
     />
   );

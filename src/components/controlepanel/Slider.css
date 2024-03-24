@@ -9,13 +9,13 @@
   height: 5px;
   cursor: pointer;
   border-radius: 10px;
-  background-color: #ADE1FF;
+  background-color: #ade1ff;
 }
 
 #myslider::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  background: #49DEFF;
+  background: #49deff;
   width: 15px;
   height: 15px;
   border-radius: 100%;

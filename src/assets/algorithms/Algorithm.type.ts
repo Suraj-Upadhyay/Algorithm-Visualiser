@@ -3,7 +3,7 @@ export interface IAlgorithmImplementation {
     elementArray: {
       data: number;
       index?: number;
-    }[]
+    }[],
   ) => {
     newIndex: { previousIndex: number; newIndex: number }[];
     done: boolean;

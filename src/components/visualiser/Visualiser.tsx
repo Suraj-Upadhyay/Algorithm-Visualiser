@@ -6,10 +6,10 @@ import { googleIconTexts } from "@/assets/constants";
 import { Algorithm } from "@/assets/algorithms";
 
 interface IVisualiserParams {
-  dataBars: number,
-  animationTime: number,
-  dataSpread: number,
-  algoUsed: string,
+  dataBars: number;
+  animationTime: number;
+  dataSpread: number;
+  algoUsed: string;
   setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
@@ -49,50 +49,42 @@ function Visualiser(props: IVisualiserParams) {
     }
   };
 
-  useEffect(
-    () => {
-      algorithmObjectRef.current = new Algorithm(dataLength, maxData);
+  useEffect(() => {
+    algorithmObjectRef.current = new Algorithm(dataLength, maxData);
+    algorithmObjectRef.current.createAlgorithmObject(algorithmName);
+    setData(algorithmObjectRef.current.stepBackward());
+    // eslint-disable-next-line
+  }, [dataLength, maxData]);
+
+  useEffect(() => {
+    algorithmObjectRef.current &&
       algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-      setData(algorithmObjectRef.current.stepBackward());
-      // eslint-disable-next-line
-    },
-    [dataLength, maxData]
-  );
+  }, [algorithmName]);
 
-  useEffect(
-    () => {
-      algorithmObjectRef.current && algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-    },
-    [algorithmName]
-  );
+  useEffect(() => {
+    let interval: NodeJS.Timeout | null = null;
 
-  useEffect(
-    () => {
-      let interval: NodeJS.Timeout | null = null;
+    if (isPlaying) {
+      // Set up the interval
+      interval = setInterval(() => {
+        let data = algorithmObjectRef.current?.stepForward();
+        data && setData(data);
+        if (algorithmObjectRef.current?.done) {
+          setIsPlaying(false);
+          props.setPlaying(false);
+        }
+      }, animationTime * 10);
+    } else if (!isPlaying && interval) {
+      clearInterval(interval);
+    }
 
-      if (isPlaying) {
-        // Set up the interval
-        interval = setInterval(() => {
-          let data = algorithmObjectRef.current?.stepForward();
-          data && setData(data);
-          if (algorithmObjectRef.current?.done) {
-            setIsPlaying(false);
-            props.setPlaying(false);
-          }
-        }, animationTime * 10);
-      } else if (!isPlaying && interval) {
+    // Clean-up function
+    return () => {
+      if (interval) {
         clearInterval(interval);
       }
-
-      // Clean-up function
-      return () => {
-        if (interval) {
-          clearInterval(interval);
-        }
-      };
-    },
-    [isPlaying]
-  );
+    };
+  }, [isPlaying]);
 
   return (
     <div className="Visualiser">

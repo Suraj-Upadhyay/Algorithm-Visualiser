@@ -42,7 +42,7 @@ export const ALGO_IMPLEMENTATION_LIST: {
   "Sleep Sort": null,
   "Stooge Sort": null,
   "Tree Sort": null,
-  "Brick Sort": null
+  "Brick Sort": null,
 };
 
 export const controlPanelConstants = {
@@ -58,7 +58,7 @@ export const controlPanelConstants = {
   MAXDATASPREAD: MAXDATASPREAD,
   DATASPREADSTEP: DATASPREADSTEP,
   DEFAULTDATASPREAD: DEFAULTDATASPREAD,
-  ALGOLIST: ALGO_IMPLEMENTATION_LIST
+  ALGOLIST: ALGO_IMPLEMENTATION_LIST,
 };
 
 export type controlPanelConstantsType = typeof controlPanelConstants;
@@ -72,5 +72,5 @@ export const googleIconTexts: IGoogleIconTexts = {
   play: "play_circle",
   pause: "pause",
   forward: "arrow_forward_ios",
-  backward: "arrow_back_ios"
+  backward: "arrow_back_ios",
 };

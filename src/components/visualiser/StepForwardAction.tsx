@@ -8,9 +8,7 @@ interface IStepForwardActionParams {
 function StepForwardAction(props: IStepForwardActionParams) {
   return (
     <div className="StepForwardAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">
-        {props.googleIcon}
-      </span>
+      <span className="material-symbols-outlined">{props.googleIcon}</span>
     </div>
   );
 }

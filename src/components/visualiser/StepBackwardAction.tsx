@@ -8,9 +8,7 @@ interface IStepBackwardActionParams {
 function StepBackwardAction(props: IStepBackwardActionParams) {
   return (
     <div className="StepBackwardAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">
-        {props.googleIcon}
-      </span>
+      <span className="material-symbols-outlined">{props.googleIcon}</span>
     </div>
   );
 }

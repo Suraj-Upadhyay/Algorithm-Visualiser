@@ -50,7 +50,7 @@ class ElementArray {
 
   generateRandomElementArray(): Element[] {
     let randomNumberArray = Array.from({ length: this.length }, () =>
-      Math.floor(Math.random() * this.maxData)
+      Math.floor(Math.random() * this.maxData),
     );
     let randomElementArray = randomNumberArray.map((value, index) => {
       return new Element(index, value);
@@ -59,13 +59,13 @@ class ElementArray {
   }
 
   getElementsAtStep(stepNumber: number): { data: number; index: number }[] {
-    return this.elementArray.map(element => {
+    return this.elementArray.map((element) => {
       return { data: element.data, index: element.getCurrentIndex(stepNumber) };
     });
   }
 
   getElementsAtCurrentStep(): { data: number; index?: number }[] {
-    return this.elementArray.map(element => {
+    return this.elementArray.map((element) => {
       return { data: element.data, index: element.getTopIndex() };
     });
   }
@@ -90,13 +90,12 @@ class Algorithm {
     if (algorithmName === "") return false;
     const algorithmClassName =
       constants.ALGO_IMPLEMENTATION_LIST[algorithmName];
-    if (algorithmClassName)
-      this.algorithmObj = new algorithmClassName();
+    if (algorithmClassName) this.algorithmObj = new algorithmClassName();
     return true;
   }
 
   updateElementArray(
-    newIndexArray: { previousIndex: number; newIndex: number }[]
+    newIndexArray: { previousIndex: number; newIndex: number }[],
   ): void {
     for (let i = 0; i < newIndexArray.length; i++) {
       let { previousIndex, newIndex } = newIndexArray[i];
@@ -118,7 +117,7 @@ class Algorithm {
       this.totalSteps++;
       this.currentStep++;
       let { newIndex, done } = this.algorithmObj.step(
-        this.elementArray.getElementsAtCurrentStep()
+        this.elementArray.getElementsAtCurrentStep(),
       );
       this.updateElementArray(newIndex);
       this.done = done;

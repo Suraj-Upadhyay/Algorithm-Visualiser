@@ -8,9 +8,7 @@ interface IPlayActionParams {
 function PlayAction(props: IPlayActionParams) {
   return (
     <div className="PlayAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">
-        {props.googleIcon}
-      </span>
+      <span className="material-symbols-outlined">{props.googleIcon}</span>
     </div>
   );
 }

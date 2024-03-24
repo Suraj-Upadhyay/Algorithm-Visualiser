@@ -1,11 +1,11 @@
 import "./Slider.css";
 
 interface ISliderParams {
-  minData: number,
-  maxData: number,
-  defaultData: number,
-  step: number,
-  onDataChange: (event: React.ChangeEvent<HTMLInputElement>) => void
+  minData: number;
+  maxData: number;
+  defaultData: number;
+  step: number;
+  onDataChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 function Slider(props: ISliderParams) {

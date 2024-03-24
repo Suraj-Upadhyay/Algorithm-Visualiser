@@ -9,7 +9,7 @@
   height: 40%;
   margin: auto;
   top: 30%;
-  background-color: #FF72F9;
+  background-color: #ff72f9;
   border-radius: 20px;
 }
 
@@ -22,11 +22,11 @@
   cursor: pointer;
 }
 
-.DropDown:hover .DropDownList{
+.DropDown:hover .DropDownList {
   display: block;
 }
 
-.DropDownList{
+.DropDownList {
   display: none;
   margin-top: 2px;
   width: 100%;

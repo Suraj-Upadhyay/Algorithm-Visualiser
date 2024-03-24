@@ -6,13 +6,13 @@ import DataSizeSelector from "./DataSizeSelector";
 import TimeLengthSelector from "./TimeLengthSelector";
 
 interface IControlPanelParams {
-  constants: controlPanelConstantsType,
-  algoUsed: string,
-  playing: boolean,
-  onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  onDataSpreadChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
-  onAlgoUsedChange: (event: React.MouseEvent<HTMLLIElement>) => void
+  constants: controlPanelConstantsType;
+  algoUsed: string;
+  playing: boolean;
+  onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onDataSpreadChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onAlgoUsedChange: (event: React.MouseEvent<HTMLLIElement>) => void;
 }
 
 function ControlPanel(props: IControlPanelParams) {
@@ -53,8 +53,9 @@ function ControlPanel(props: IControlPanelParams) {
           onDataSizeChange={props.onDataSpreadChange}
         />
       </div>
-      {props.playing &&
-        <div className="absolute top-0 left-0 bg-gray-400 bg-opacity-20 h-full w-full" />}
+      {props.playing && (
+        <div className="absolute left-0 top-0 h-full w-full bg-gray-400 bg-opacity-20" />
+      )}
     </div>
   );
 }
