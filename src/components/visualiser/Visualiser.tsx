@@ -2,8 +2,8 @@ import "./Visualiser.css";
 import { useEffect, useRef, useState } from "react";
 import DataView from "./DataView";
 import PlayControl from "./PlayControl";
-import { googleIconTexts } from "../../assets/constants";
-import { Algorithm } from "../../assets/algorithms";
+import { googleIconTexts } from "@/assets/constants";
+import { Algorithm } from "@/assets/algorithms";
 
 interface IVisualiserParams {
   dataBars: number,
