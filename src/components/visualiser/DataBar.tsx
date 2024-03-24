@@ -1,5 +1,4 @@
-import { useEffect, useState } from "react";
-import "./DataBar.css";
+import React, { useEffect, useState } from "react";
 
 interface IDataBarParams {
   data: number;
@@ -9,9 +8,9 @@ interface IDataBarParams {
   parentHeight: number;
 }
 
-function DataBar(props: IDataBarParams) {
+function DataBar(props: IDataBarParams): JSX.Element {
   const data = props.data;
-  const index = props.index && props.index + 1;
+  const index = props.index !== undefined && props.index + 1;
   const dataLength = props.dataLength;
   const maxData = props.maxData;
   const parentHeight = props.parentHeight;
@@ -20,15 +19,17 @@ function DataBar(props: IDataBarParams) {
   const maxWidth = 30;
 
   useEffect(() => {
-    const totalWidth = (document.querySelector(".DataView") as HTMLElement)
-      .offsetWidth;
-    const elementWidth = Math.min((totalWidth * 0.9) / dataLength, maxWidth);
-    setElementWidth(elementWidth);
+    const dataViewElement = document.querySelector(".DataView");
+    if (dataViewElement !== null) {
+      const totalWidth = (dataViewElement as HTMLElement).offsetWidth;
+      const elementWidth = Math.min((totalWidth * 0.9) / dataLength, maxWidth);
+      setElementWidth(elementWidth);
+    }
   }, [dataLength]);
 
   return (
     <div
-      className="DataBar"
+      className="rounded-tl-sm rounded-tr-sm opacity-90"
       style={{
         height: elementHeight,
         width: elementWidth,

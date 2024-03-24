@@ -1,5 +1,5 @@
+import React, { useEffect, useRef, useState } from "react";
 import "./Visualiser.css";
-import { useEffect, useRef, useState } from "react";
 import DataView from "./DataView";
 import PlayControl from "./PlayControl";
 import { googleIconTexts } from "@/assets/constants";
@@ -13,7 +13,7 @@ interface IVisualiserParams {
   setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-function Visualiser(props: IVisualiserParams) {
+function Visualiser(props: IVisualiserParams): JSX.Element {
   const dataLength = props.dataBars;
   const animationTime = props.animationTime;
   const maxData = props.dataSpread;
@@ -23,9 +23,11 @@ function Visualiser(props: IVisualiserParams) {
 
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
   const [stepNumber, setStepNumber] = useState<number>(0);
-  const [data, setData] = useState<{ data: number; index?: number }[]>([]);
+  const [data, setData] = useState<Array<{ data: number; index?: number }>>([]);
 
-  const onPlayControlAction = (event: React.MouseEvent<HTMLDivElement>) => {
+  const onPlayControlAction = (
+    event: React.MouseEvent<HTMLDivElement>,
+  ): void => {
     const actionItemClicked = (event.target as HTMLElement).textContent;
     let newStepNumber;
     // eslint-disable-next-line
@@ -57,9 +59,11 @@ function Visualiser(props: IVisualiserParams) {
   }, [dataLength, maxData]);
 
   useEffect(() => {
-    algorithmObjectRef.current &&
+    if (algorithmObjectRef.current !== null) {
       algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-  }, [algorithmName]);
+      setData(algorithmObjectRef.current.stepBackward());
+    }
+  }, [dataLength, maxData]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -67,34 +71,37 @@ function Visualiser(props: IVisualiserParams) {
     if (isPlaying) {
       // Set up the interval
       interval = setInterval(() => {
-        let data = algorithmObjectRef.current?.stepForward();
-        data && setData(data);
-        if (algorithmObjectRef.current?.done) {
+        const data = algorithmObjectRef.current?.stepForward();
+        data !== undefined && setData(data);
+        if (
+          algorithmObjectRef.current !== null &&
+          algorithmObjectRef.current.done
+        ) {
           setIsPlaying(false);
           props.setPlaying(false);
         }
       }, animationTime * 10);
-    } else if (!isPlaying && interval) {
+    } else if (!isPlaying && interval !== null) {
       clearInterval(interval);
     }
 
     // Clean-up function
     return () => {
-      if (interval) {
+      if (interval !== null) {
         clearInterval(interval);
       }
     };
   }, [isPlaying]);
 
   return (
-    <div className="Visualiser">
-      <div className="PlayControlContainer">
+    <div className="w-full h-full rounded-bl-[5px] border-l-[2px] border-b-[2px] border-solid border-white">
+      <div className="float-right h-[40px] w-[240px] m-0 p-0">
         <PlayControl
           googleIconText={googleIconTexts}
           onPlayControlAction={onPlayControlAction}
         />
       </div>
-      <div className="DataViewContainer">
+      <div className="h-full w-full">
         <DataView dataLength={dataLength} data={data} maxData={maxData} />
       </div>
     </div>

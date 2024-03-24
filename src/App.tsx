@@ -1,9 +1,9 @@
 import "./App.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { ControlPanel, Visualiser } from "./components";
 import * as constants from "./assets/constants";
 
-function App() {
+function App(): JSX.Element {
   const [dataBars, setDataBars] = useState<number>(constants.DEFAULTDATABARS);
   const [animationTime, setAnimationTime] = useState<number>(
     constants.DEFAULTTIME,
@@ -14,29 +14,33 @@ function App() {
   const [playing, setPlaying] = useState<boolean>(false);
   const [algoUsed, setAlgoUsed] = useState<string>("None");
 
-  const onDataBarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onDataBarsChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newDataBarValue = +event.target.value;
-    newDataBarValue && setDataBars(newDataBarValue);
+    newDataBarValue !== null && setDataBars(newDataBarValue);
   };
 
   const onAnimationTimeChange = (
     event: React.ChangeEvent<HTMLInputElement>,
-  ) => {
+  ): void => {
     const newAnimationTime = +event.target.value;
-    newAnimationTime && setAnimationTime(newAnimationTime);
+    newAnimationTime !== null && setAnimationTime(newAnimationTime);
   };
 
-  const onDataSpreadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const onDataSpreadChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newSpreadChange = +event.target.value;
-    newSpreadChange && setDataSpread(newSpreadChange);
+    newSpreadChange !== null && setDataSpread(newSpreadChange);
   };
 
-  const onAlgoUsedChange = (event: React.MouseEvent<HTMLLIElement>) => {
+  const onAlgoUsedChange = (event: React.MouseEvent<HTMLLIElement>): void => {
     let newAlgoUsed = (event.target as HTMLLIElement).textContent;
     newAlgoUsed = newAlgoUsed === "None" ? "None" : newAlgoUsed;
     if (
-      newAlgoUsed &&
-      (constants.ALGO_IMPLEMENTATION_LIST[newAlgoUsed] ||
+      newAlgoUsed !== null &&
+      (constants.ALGO_IMPLEMENTATION_LIST[newAlgoUsed] !== null ||
         newAlgoUsed === "None")
     )
       setAlgoUsed(newAlgoUsed);

@@ -1,3 +1,4 @@
+import React from "react";
 import "./DataSizeSelector.css";
 import Slider from "./Slider";
 
@@ -9,7 +10,7 @@ interface IDataSizeSelectorParams {
   onDataSizeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function DataSizeSelector(props: IDataSizeSelectorParams) {
+function DataSizeSelector(props: IDataSizeSelectorParams): JSX.Element {
   return (
     <div className="DataSizeSelector">
       <p>Maximum Data</p>

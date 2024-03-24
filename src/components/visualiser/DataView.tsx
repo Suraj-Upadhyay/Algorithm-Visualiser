@@ -1,31 +1,31 @@
-import { useEffect, useState } from "react";
-import "./DataView.css";
+import React, { useEffect, useState } from "react";
 import DataBar from "./DataBar";
 
 interface IDataViewParams {
   dataLength: number;
-  data: {
+  data: Array<{
     data: number;
     index?: number;
-  }[];
+  }>;
   maxData: number;
 }
 
-function DataView(props: IDataViewParams) {
+function DataView(props: IDataViewParams): JSX.Element {
   const data = props.data;
   const dataLength = props.dataLength;
   const maxData = props.maxData;
   const [height, setHeight] = useState(0);
-  let gridColumnString = "auto ".repeat(dataLength);
+  const gridColumnString = "auto ".repeat(dataLength);
 
   useEffect(() => {
-    setHeight(
-      (document.querySelector(".DataView") as HTMLElement).offsetHeight,
-    );
+    const dataViewElement = document.querySelector(".DataView");
+    if (dataViewElement !== null) {
+      setHeight((dataViewElement as HTMLElement).offsetHeight);
+    }
   }, []);
 
   return (
-    <div className="DataView" style={{ gridTemplateColumns: gridColumnString }}>
+    <div className="DataView grid justify-evenly items-end relative w-[95%] h-[94%] m-auto -bottom-[2px]" style={{ gridTemplateColumns: gridColumnString }}>
       {data.map((item, index) => (
         <DataBar
           key={index}

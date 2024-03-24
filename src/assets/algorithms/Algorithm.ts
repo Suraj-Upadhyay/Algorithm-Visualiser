@@ -1,5 +1,5 @@
 import * as constants from "../constants";
-import { IAlgorithmImplementation } from "./Algorithm.type";
+import { type IAlgorithmImplementation } from "./Algorithm.type";
 
 class Element {
   data: number;
@@ -49,22 +49,24 @@ class ElementArray {
   }
 
   generateRandomElementArray(): Element[] {
-    let randomNumberArray = Array.from({ length: this.length }, () =>
+    const randomNumberArray = Array.from({ length: this.length }, () =>
       Math.floor(Math.random() * this.maxData),
     );
-    let randomElementArray = randomNumberArray.map((value, index) => {
+    const randomElementArray = randomNumberArray.map((value, index) => {
       return new Element(index, value);
     });
     return randomElementArray;
   }
 
-  getElementsAtStep(stepNumber: number): { data: number; index: number }[] {
+  getElementsAtStep(
+    stepNumber: number,
+  ): Array<{ data: number; index: number }> {
     return this.elementArray.map((element) => {
       return { data: element.data, index: element.getCurrentIndex(stepNumber) };
     });
   }
 
-  getElementsAtCurrentStep(): { data: number; index?: number }[] {
+  getElementsAtCurrentStep(): Array<{ data: number; index?: number }> {
     return this.elementArray.map((element) => {
       return { data: element.data, index: element.getTopIndex() };
     });
@@ -86,22 +88,23 @@ class Algorithm {
     this.algorithmObj = null;
   }
 
-  createAlgorithmObject(algorithmName: string) {
+  createAlgorithmObject(algorithmName: string): boolean {
     if (algorithmName === "") return false;
-    const algorithmClassName =
+    const AlgorithmClassName =
       constants.ALGO_IMPLEMENTATION_LIST[algorithmName];
-    if (algorithmClassName) this.algorithmObj = new algorithmClassName();
+    if (AlgorithmClassName !== null)
+      this.algorithmObj = new AlgorithmClassName();
     return true;
   }
 
   updateElementArray(
-    newIndexArray: { previousIndex: number; newIndex: number }[],
+    newIndexArray: Array<{ previousIndex: number; newIndex: number }>,
   ): void {
     for (let i = 0; i < newIndexArray.length; i++) {
-      let { previousIndex, newIndex } = newIndexArray[i];
+      const { previousIndex, newIndex } = newIndexArray[i];
       if (previousIndex === -1) continue;
       for (let j = 0; j < this.elementArray.length; j++) {
-        let currentElementIndex = this.elementArray.elementArray[
+        const currentElementIndex = this.elementArray.elementArray[
           j
         ].getCurrentIndex(this.totalSteps - 1);
         if (currentElementIndex === previousIndex) {
@@ -113,10 +116,10 @@ class Algorithm {
   }
 
   step(): boolean {
-    if (!this.done && this.algorithmObj) {
+    if (!this.done && this.algorithmObj !== null) {
       this.totalSteps++;
       this.currentStep++;
-      let { newIndex, done } = this.algorithmObj.step(
+      const { newIndex, done } = this.algorithmObj.step(
         this.elementArray.getElementsAtCurrentStep(),
       );
       this.updateElementArray(newIndex);
@@ -125,7 +128,7 @@ class Algorithm {
     return !this.done;
   }
 
-  stepForward(): { data: number; index?: number }[] {
+  stepForward(): Array<{ data: number; index?: number }> {
     this.currentStep++;
     if (this.currentStep <= this.totalSteps) {
       return this.elementArray.getElementsAtStep(this.currentStep);
@@ -135,7 +138,7 @@ class Algorithm {
     return this.elementArray.getElementsAtCurrentStep();
   }
 
-  stepBackward(): { data: number; index?: number }[] {
+  stepBackward(): Array<{ data: number; index?: number }> {
     if (this.currentStep === 0) {
       return this.elementArray.getElementsAtStep(0);
     }

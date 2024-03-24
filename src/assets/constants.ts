@@ -1,4 +1,6 @@
-import { AlgorithmImplementation } from "./algorithms/Algorithm.type";
+/* eslint-disable @typescript-eslint/consistent-indexed-object-style */
+/* eslint-disable object-shorthand */
+import { type AlgorithmImplementation } from "./algorithms/Algorithm.type";
 import { SelectionSort } from "./algorithms/index";
 
 export const MINDATABARS = 5;
