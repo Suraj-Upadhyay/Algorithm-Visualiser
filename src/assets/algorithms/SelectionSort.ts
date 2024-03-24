@@ -36,11 +36,12 @@ class SelectionSort implements IAlgorithmImplementation {
     let minimumIndex = this.currentSortingIndex;
     for (let i = this.currentSortingIndex + 1; i < elementArray.length; i++) {
       const currentElement = this.getElementAtIndex(elementArray, i);
-      const minimumElement = this.getElementAtIndex(
-        elementArray,
-        minimumIndex,
-      );
-      if (currentElement !== undefined && minimumElement !== undefined && currentElement < minimumElement) {
+      const minimumElement = this.getElementAtIndex(elementArray, minimumIndex);
+      if (
+        currentElement !== undefined &&
+        minimumElement !== undefined &&
+        currentElement < minimumElement
+      ) {
         minimumIndex = i;
       }
     }

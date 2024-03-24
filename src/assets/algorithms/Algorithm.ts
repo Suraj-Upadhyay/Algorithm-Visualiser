@@ -58,7 +58,9 @@ class ElementArray {
     return randomElementArray;
   }
 
-  getElementsAtStep(stepNumber: number): Array<{ data: number; index: number }> {
+  getElementsAtStep(
+    stepNumber: number,
+  ): Array<{ data: number; index: number }> {
     return this.elementArray.map((element) => {
       return { data: element.data, index: element.getCurrentIndex(stepNumber) };
     });
@@ -90,7 +92,8 @@ class Algorithm {
     if (algorithmName === "") return false;
     const AlgorithmClassName =
       constants.ALGO_IMPLEMENTATION_LIST[algorithmName];
-    if (AlgorithmClassName !== null) this.algorithmObj = new AlgorithmClassName();
+    if (AlgorithmClassName !== null)
+      this.algorithmObj = new AlgorithmClassName();
     return true;
   }
 

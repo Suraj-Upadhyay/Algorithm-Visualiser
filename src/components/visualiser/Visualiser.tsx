@@ -25,7 +25,9 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
   const [stepNumber, setStepNumber] = useState<number>(0);
   const [data, setData] = useState<Array<{ data: number; index?: number }>>([]);
 
-  const onPlayControlAction = (event: React.MouseEvent<HTMLDivElement>): void => {
+  const onPlayControlAction = (
+    event: React.MouseEvent<HTMLDivElement>,
+  ): void => {
     const actionItemClicked = (event.target as HTMLElement).textContent;
     let newStepNumber;
     // eslint-disable-next-line
@@ -61,9 +63,7 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
       algorithmObjectRef.current.createAlgorithmObject(algorithmName);
       setData(algorithmObjectRef.current.stepBackward());
     }
-  },
-    [dataLength, maxData]
-  );
+  }, [dataLength, maxData]);
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
@@ -73,7 +73,10 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
       interval = setInterval(() => {
         const data = algorithmObjectRef.current?.stepForward();
         data !== undefined && setData(data);
-        if (algorithmObjectRef.current !== null && algorithmObjectRef.current.done) {
+        if (
+          algorithmObjectRef.current !== null &&
+          algorithmObjectRef.current.done
+        ) {
           setIsPlaying(false);
           props.setPlaying(false);
         }

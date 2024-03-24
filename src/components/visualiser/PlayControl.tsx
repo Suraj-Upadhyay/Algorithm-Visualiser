@@ -10,7 +10,7 @@ interface IPlayControlParams {
 
 function PlayControl(props: IPlayControlParams): JSX.Element {
   return (
-    <div className="relative h-full w-full rounded-[10px] z-10">
+    <div className="relative z-10 h-full w-full rounded-[10px]">
       <ActionItem
         googleIcon={props.googleIconText.pause}
         onPlayControlAction={props.onPlayControlAction}

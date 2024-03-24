@@ -14,7 +14,9 @@ function App(): JSX.Element {
   const [playing, setPlaying] = useState<boolean>(false);
   const [algoUsed, setAlgoUsed] = useState<string>("None");
 
-  const onDataBarsChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onDataBarsChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newDataBarValue = +event.target.value;
     newDataBarValue !== null && setDataBars(newDataBarValue);
   };
@@ -26,7 +28,9 @@ function App(): JSX.Element {
     newAnimationTime !== null && setAnimationTime(newAnimationTime);
   };
 
-  const onDataSpreadChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+  const onDataSpreadChange = (
+    event: React.ChangeEvent<HTMLInputElement>,
+  ): void => {
     const newSpreadChange = +event.target.value;
     newSpreadChange !== null && setDataSpread(newSpreadChange);
   };
