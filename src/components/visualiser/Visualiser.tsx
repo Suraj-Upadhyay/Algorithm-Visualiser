@@ -17,7 +17,7 @@ interface IVisualiserParams {
 function Visualiser(props: IVisualiserParams) {
   const dataLength = props.dataBars;
   // eslint-disable-next-line
-  const delay = props.animationTime;
+  const animationTime = props.animationTime;
   const maxData = props.dataSpread;
   const algorithmName = props.algoUsed;
   // eslint-disable-next-line
@@ -79,7 +79,7 @@ function Visualiser(props: IVisualiserParams) {
         interval = setInterval(() => {
           let data = algorithmObjectRef.current?.stepForward();
           data && setData(data);
-        }, 100);
+        }, animationTime * 10);
       } else if (!isPlaying && interval) {
         clearInterval(interval);
       }
