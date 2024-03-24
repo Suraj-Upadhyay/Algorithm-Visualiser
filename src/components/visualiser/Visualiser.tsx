@@ -1,5 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import "./Visualiser.css";
 import DataView from "./DataView";
 import PlayControl from "./PlayControl";
 import { googleIconTexts } from "@/assets/constants";
