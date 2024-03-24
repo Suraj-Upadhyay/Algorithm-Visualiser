@@ -10,31 +10,23 @@ interface IPlayControlParams {
 
 function PlayControl(props: IPlayControlParams): JSX.Element {
   return (
-    <div className="PlayControl">
-      <div>
-        <ActionItem
-          googleIcon={props.googleIconText.pause}
-          onPlayControlAction={props.onPlayControlAction}
-        />
-      </div>
-      <div>
-        <ActionItem
-          googleIcon={props.googleIconText.play}
-          onPlayControlAction={props.onPlayControlAction}
-        />
-      </div>
-      <div>
-        <ActionItem
-          googleIcon={props.googleIconText.forward}
-          onPlayControlAction={props.onPlayControlAction}
-        />
-      </div>
-      <div>
-        <ActionItem
-          googleIcon={props.googleIconText.backward}
-          onPlayControlAction={props.onPlayControlAction}
-        />
-      </div>
+    <div className="relative h-full w-full rounded-[10px] z-10">
+      <ActionItem
+        googleIcon={props.googleIconText.pause}
+        onPlayControlAction={props.onPlayControlAction}
+      />
+      <ActionItem
+        googleIcon={props.googleIconText.play}
+        onPlayControlAction={props.onPlayControlAction}
+      />
+      <ActionItem
+        googleIcon={props.googleIconText.forward}
+        onPlayControlAction={props.onPlayControlAction}
+      />
+      <ActionItem
+        googleIcon={props.googleIconText.backward}
+        onPlayControlAction={props.onPlayControlAction}
+      />
     </div>
   );
 }
