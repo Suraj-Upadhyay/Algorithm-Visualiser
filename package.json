@@ -5,7 +5,8 @@
   "homepage": "https://Suraj-Upadhyay.github.io/Algorithm-Visualiser",
   "dependencies": {
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1"
   },
   "scripts": {
     "deploy": "gh-pages -d build",
