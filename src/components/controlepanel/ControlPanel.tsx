@@ -8,7 +8,6 @@ import TimeLengthSelector from "./TimeLengthSelector";
 interface IControlPanelParams {
   constants: controlPanelConstantsType,
   algoUsed: string,
-  algoDone: boolean,
   playing: boolean,
   onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
   onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
@@ -31,6 +30,7 @@ function ControlPanel(props: IControlPanelParams) {
         <DataLengthSelector
           minDataBars={controlPanelConstants.MINDATABARS}
           maxDataBars={controlPanelConstants.MAXDATABARS}
+          step={controlPanelConstants.DATABARSSTEP}
           defaultDataBars={controlPanelConstants.DEFAULTDATABARS}
           onDataBarsChange={props.onDataBarsChange}
         />
@@ -39,6 +39,7 @@ function ControlPanel(props: IControlPanelParams) {
         <TimeLengthSelector
           minTime={controlPanelConstants.MINTIME}
           maxTime={controlPanelConstants.MAXTIME}
+          step={controlPanelConstants.TIMESTEP}
           defaultTime={controlPanelConstants.DEFAULTTIME}
           onAnimationTimeChange={props.onAnimationTimeChange}
         />
@@ -47,6 +48,7 @@ function ControlPanel(props: IControlPanelParams) {
         <DataSizeSelector
           minDataSize={controlPanelConstants.MINDATASPREAD}
           maxDataSize={controlPanelConstants.MAXDATASPREAD}
+          step={controlPanelConstants.DATASPREADSTEP}
           defaultDataSize={controlPanelConstants.DEFAULTDATASPREAD}
           onDataSizeChange={props.onDataSpreadChange}
         />

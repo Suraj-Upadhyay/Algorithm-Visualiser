@@ -4,6 +4,7 @@ interface ISliderParams {
   minData: number,
   maxData: number,
   defaultData: number,
+  step: number,
   onDataChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -12,6 +13,7 @@ function Slider(props: ISliderParams) {
   const maxData = props.maxData;
   const defaultData = props.defaultData;
   const onDataChange = props.onDataChange;
+  const step = props.step;
 
   return (
     <div className="Slider">
@@ -19,7 +21,7 @@ function Slider(props: ISliderParams) {
         type="range"
         min={minData}
         max={maxData}
-        step="1"
+        step={step}
         className="slider"
         defaultValue={defaultData}
         id="myslider"

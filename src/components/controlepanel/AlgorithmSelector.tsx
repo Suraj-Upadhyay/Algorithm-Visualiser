@@ -10,7 +10,7 @@ interface IAlgorithmSelectorParams {
 
 function AlgorithmSelector(props: IAlgorithmSelectorParams) {
   const algoList = props.algoList;
-  const algoUsed = props.algoUsed ? props.algoUsed : "Select Aglorithm";
+  const algoUsed = props.algoUsed !== "None" ? props.algoUsed : "Select Aglorithm";
   const onAlgoUsedChange = props.onAlgoUsedChange;
 
   return (

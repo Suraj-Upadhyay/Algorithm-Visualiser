@@ -5,6 +5,7 @@ interface ITimeLengthSelectorParams {
   minTime: number,
   maxTime: number,
   defaultTime: number,
+  step: number,
   onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -22,6 +23,7 @@ function TimeLengthSelector(props: ITimeLengthSelectorParams) {
         <Slider
           minData={props.minTime}
           maxData={props.maxTime}
+          step={props.step}
           defaultData={props.defaultTime}
           onDataChange={props.onAnimationTimeChange}
         />

@@ -8,8 +8,7 @@ function App() {
   const [animationTime, setAnimationTime] = useState<number>(constants.DEFAULTTIME);
   const [dataSpread, setDataSpread] = useState<number>(constants.DEFAULTDATASPREAD);
   const [playing, setPlaying] = useState<boolean>(false);
-  const [algoUsed, setAlgoUsed] = useState<string>("");
-  const [algoDone, setAlgoDone] = useState<boolean>(false);
+  const [algoUsed, setAlgoUsed] = useState<string>("None");
 
   const onDataBarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newDataBarValue = +event.target.value;
@@ -24,11 +23,6 @@ function App() {
   const onDataSpreadChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newSpreadChange = +event.target.value;
     newSpreadChange && setDataSpread(newSpreadChange);
-  };
-
-  const onAlgoDoneChange = () => {
-    let newAlgoDone = !algoDone;
-    setAlgoDone(newAlgoDone);
   };
 
   const onAlgoUsedChange = (event: React.MouseEvent<HTMLLIElement>) => {
@@ -57,7 +51,6 @@ function App() {
           <ControlPanel
             constants={constants.controlPanelConstants}
             algoUsed={algoUsed}
-            algoDone={algoDone}
             playing={playing}
             onDataBarsChange={onDataBarsChange}
             onAnimationTimeChange={onAnimationTimeChange}
@@ -71,7 +64,6 @@ function App() {
             animationTime={animationTime}
             dataSpread={dataSpread}
             algoUsed={algoUsed}
-            onAlgoDoneChange={onAlgoDoneChange}
             setPlaying={setPlaying}
           />
         </div>

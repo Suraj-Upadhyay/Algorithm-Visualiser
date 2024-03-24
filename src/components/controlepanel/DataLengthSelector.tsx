@@ -5,6 +5,7 @@ interface IDataLengthSelectorParams {
   minDataBars: number,
   maxDataBars: number,
   defaultDataBars: number,
+  step: number,
   onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
@@ -22,6 +23,7 @@ function DataLengthSelector(props: IDataLengthSelectorParams) {
         <Slider
           minData={props.minDataBars}
           maxData={props.maxDataBars}
+          step={props.step}
           defaultData={props.defaultDataBars}
           onDataChange={props.onDataBarsChange}
         />
