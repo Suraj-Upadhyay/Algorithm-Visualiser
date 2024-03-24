@@ -1,5 +1,6 @@
+import React from "react";
 import "./ControlPanel.css";
-import { controlPanelConstantsType } from "@/assets/constants";
+import { type controlPanelConstantsType } from "@/assets/constants";
 import AlgorithmSelector from "./AlgorithmSelector";
 import DataLengthSelector from "./DataLengthSelector";
 import DataSizeSelector from "./DataSizeSelector";
@@ -15,7 +16,7 @@ interface IControlPanelParams {
   onAlgoUsedChange: (event: React.MouseEvent<HTMLLIElement>) => void;
 }
 
-function ControlPanel(props: IControlPanelParams) {
+function ControlPanel(props: IControlPanelParams): JSX.Element {
   const controlPanelConstants = props.constants;
   return (
     <div className={`ControlPanel relative ${props.playing && "disabled"}`}>

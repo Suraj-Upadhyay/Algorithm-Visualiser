@@ -1,3 +1,4 @@
+import React from "react";
 import "./PlayAction.css";
 
 interface IPlayActionParams {
@@ -5,7 +6,7 @@ interface IPlayActionParams {
   onPlayControlAction: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-function PlayAction(props: IPlayActionParams) {
+function PlayAction(props: IPlayActionParams): JSX.Element {
   return (
     <div className="PlayAction" onClick={props.onPlayControlAction}>
       <span className="material-symbols-outlined">{props.googleIcon}</span>

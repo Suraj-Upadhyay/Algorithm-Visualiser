@@ -1,3 +1,4 @@
+import React from "react";
 import "./TimeLengthSelector.css";
 import Slider from "./Slider";
 
@@ -9,7 +10,7 @@ interface ITimeLengthSelectorParams {
   onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-function TimeLengthSelector(props: ITimeLengthSelectorParams) {
+function TimeLengthSelector(props: ITimeLengthSelectorParams): JSX.Element {
   return (
     <div className="TimeLengthSelector">
       <p>Animation Time</p>

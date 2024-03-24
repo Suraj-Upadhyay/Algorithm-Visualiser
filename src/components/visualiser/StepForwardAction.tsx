@@ -1,3 +1,4 @@
+import React from "react";
 import "./StepForwardAction.css";
 
 interface IStepForwardActionParams {
@@ -5,7 +6,7 @@ interface IStepForwardActionParams {
   onPlayControlAction: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-function StepForwardAction(props: IStepForwardActionParams) {
+function StepForwardAction(props: IStepForwardActionParams): JSX.Element {
   return (
     <div className="StepForwardAction" onClick={props.onPlayControlAction}>
       <span className="material-symbols-outlined">{props.googleIcon}</span>

@@ -1,16 +1,17 @@
+import React from "react";
 import "./PlayControl.css";
 import PauseAction from "./PauseAction";
 import PlayAction from "./PlayAction";
 import StepBackwardAction from "./StepBackwardAction";
 import StepForwardAction from "./StepForwardAction";
-import { IGoogleIconTexts } from "@/assets/constants";
+import { type IGoogleIconTexts } from "@/assets/constants";
 
 interface IPlayControlParams {
   googleIconText: IGoogleIconTexts;
   onPlayControlAction: (event: React.MouseEvent<HTMLDivElement>) => void;
 }
 
-function PlayControl(props: IPlayControlParams) {
+function PlayControl(props: IPlayControlParams): JSX.Element {
   return (
     <div className="PlayControl">
       <div>

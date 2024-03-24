@@ -1,5 +1,6 @@
+import React from "react";
 import clsx from "clsx";
-import { algorithmListType } from "@/assets/constants";
+import { type algorithmListType } from "@/assets/constants";
 import "./AlgorithmSelector.css";
 
 interface IAlgorithmSelectorParams {
@@ -8,7 +9,7 @@ interface IAlgorithmSelectorParams {
   onAlgoUsedChange: (event: React.MouseEvent<HTMLLIElement>) => void;
 }
 
-function AlgorithmSelector(props: IAlgorithmSelectorParams) {
+function AlgorithmSelector(props: IAlgorithmSelectorParams): JSX.Element {
   const algoList = props.algoList;
   const algoUsed =
     props.algoUsed !== "None" ? props.algoUsed : "Select Aglorithm";
@@ -25,7 +26,7 @@ function AlgorithmSelector(props: IAlgorithmSelectorParams) {
                 <li
                   className={clsx(
                     "box-border flex h-[42.2px] w-full flex-col pt-[10px] text-center",
-                    algoList[item] || item === "None"
+                    algoList[item] !== null || item === "None"
                       ? "cursor-pointer bg-white hover:opacity-80"
                       : "cursor-default bg-gray-200",
                   )}

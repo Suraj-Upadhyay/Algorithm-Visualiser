@@ -1,11 +1,11 @@
 export interface IAlgorithmImplementation {
   step: (
-    elementArray: {
+    elementArray: Array<{
       data: number;
       index?: number;
-    }[],
+    }>,
   ) => {
-    newIndex: { previousIndex: number; newIndex: number }[];
+    newIndex: Array<{ previousIndex: number; newIndex: number }>;
     done: boolean;
   };
 }
