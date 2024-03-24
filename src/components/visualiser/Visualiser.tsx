@@ -57,9 +57,13 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
   }, [dataLength, maxData]);
 
   useEffect(() => {
-    algorithmObjectRef.current !== null &&
+    if (algorithmObjectRef.current !== null) {
       algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-  }, [algorithmName]);
+      setData(algorithmObjectRef.current.stepBackward());
+    }
+  },
+    [dataLength, maxData]
+  );
 
   useEffect(() => {
     let interval: NodeJS.Timeout | null = null;

@@ -1,10 +1,7 @@
 import React from "react";
 import "./PlayControl.css";
-import PauseAction from "./PauseAction";
-import PlayAction from "./PlayAction";
-import StepBackwardAction from "./StepBackwardAction";
-import StepForwardAction from "./StepForwardAction";
 import { type IGoogleIconTexts } from "@/assets/constants";
+import ActionItem from "./ActionItem";
 
 interface IPlayControlParams {
   googleIconText: IGoogleIconTexts;
@@ -15,25 +12,25 @@ function PlayControl(props: IPlayControlParams): JSX.Element {
   return (
     <div className="PlayControl">
       <div>
-        <PauseAction
+        <ActionItem
           googleIcon={props.googleIconText.pause}
           onPlayControlAction={props.onPlayControlAction}
         />
       </div>
       <div>
-        <PlayAction
+        <ActionItem
           googleIcon={props.googleIconText.play}
           onPlayControlAction={props.onPlayControlAction}
         />
       </div>
       <div>
-        <StepForwardAction
+        <ActionItem
           googleIcon={props.googleIconText.forward}
           onPlayControlAction={props.onPlayControlAction}
         />
       </div>
       <div>
-        <StepBackwardAction
+        <ActionItem
           googleIcon={props.googleIconText.backward}
           onPlayControlAction={props.onPlayControlAction}
         />
