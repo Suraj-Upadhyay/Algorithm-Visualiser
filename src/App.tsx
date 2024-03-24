@@ -8,7 +8,7 @@ function App() {
   const [animationTime, setAnimationTime] = useState<number>(constants.DEFAULTTIME);
   const [dataSpread, setDataSpread] = useState<number>(constants.DEFAULTDATASPREAD);
   const [playing, setPlaying] = useState<boolean>(false);
-  const [algoUsed, setAlgoUsed] = useState<string>("");
+  const [algoUsed, setAlgoUsed] = useState<string>("None");
   const [algoDone, setAlgoDone] = useState<boolean>(false);
 
   const onDataBarsChange = (event: React.ChangeEvent<HTMLInputElement>) => {
