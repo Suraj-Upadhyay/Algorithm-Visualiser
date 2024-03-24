@@ -5,6 +5,7 @@ interface IDataSizeSelectorParams {
   minDataSize: number,
   maxDataSize: number,
   defaultDataSize: number,
+  step: number,
   onDataSizeChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
 }
 
@@ -22,6 +23,7 @@ function DataSizeSelector(props: IDataSizeSelectorParams) {
         <Slider
           minData={props.minDataSize}
           maxData={props.maxDataSize}
+          step={props.step}
           defaultData={props.defaultDataSize}
           onDataChange={props.onDataSizeChange}
         />
