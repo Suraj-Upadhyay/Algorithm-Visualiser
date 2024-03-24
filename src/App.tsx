@@ -33,8 +33,9 @@ function App() {
 
   const onAlgoUsedChange = (event: React.MouseEvent<HTMLLIElement>) => {
     let newAlgoUsed = (event.target as HTMLLIElement).textContent;
-    newAlgoUsed = newAlgoUsed === "None" ? "" : newAlgoUsed;
-    newAlgoUsed && setAlgoUsed(newAlgoUsed);
+    newAlgoUsed = newAlgoUsed === "None" ? "None" : newAlgoUsed;
+    if (newAlgoUsed && (constants.ALGO_IMPLEMENTATION_LIST[newAlgoUsed] || newAlgoUsed === "None"))
+      setAlgoUsed(newAlgoUsed);
   };
 
   return (
