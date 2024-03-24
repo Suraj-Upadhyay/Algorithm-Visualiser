@@ -3,7 +3,7 @@ import PauseAction from "./PauseAction";
 import PlayAction from "./PlayAction";
 import StepBackwardAction from "./StepBackwardAction";
 import StepForwardAction from "./StepForwardAction";
-import { IGoogleIconTexts } from "../../assets/constants";
+import { IGoogleIconTexts } from "@/assets/constants";
 
 interface IPlayControlParams {
   googleIconText: IGoogleIconTexts;

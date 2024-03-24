@@ -1,4 +1,4 @@
-import { algorithmListType } from "../../assets/constants";
+import { algorithmListType } from "@/assets/constants";
 import "./AlgorithmSelector.css";
 
 interface IAlgorithmSelectorParams {

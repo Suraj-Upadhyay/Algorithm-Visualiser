@@ -1,5 +1,5 @@
 import "./ControlPanel.css";
-import { controlPanelConstantsType } from "../../assets/constants";
+import { controlPanelConstantsType } from "@/assets/constants";
 import AlgorithmSelector from "./AlgorithmSelector";
 import DataLengthSelector from "./DataLengthSelector";
 import DataSizeSelector from "./DataSizeSelector";
