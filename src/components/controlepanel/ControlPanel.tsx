@@ -8,7 +8,6 @@ import TimeLengthSelector from "./TimeLengthSelector";
 interface IControlPanelParams {
   constants: controlPanelConstantsType,
   algoUsed: string,
-  algoDone: boolean,
   playing: boolean,
   onDataBarsChange: (event: React.ChangeEvent<HTMLInputElement>) => void,
   onAnimationTimeChange: (event: React.ChangeEvent<HTMLInputElement>) => void,

@@ -10,18 +10,14 @@ interface IVisualiserParams {
   animationTime: number,
   dataSpread: number,
   algoUsed: string,
-  onAlgoDoneChange: () => void,
   setPlaying: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 function Visualiser(props: IVisualiserParams) {
   const dataLength = props.dataBars;
-  // eslint-disable-next-line
   const animationTime = props.animationTime;
   const maxData = props.dataSpread;
   const algorithmName = props.algoUsed;
-  // eslint-disable-next-line
-  const onAlgoDoneChange = props.onAlgoDoneChange;
 
   const algorithmObjectRef = useRef<Algorithm | null>(null);
 
@@ -79,6 +75,10 @@ function Visualiser(props: IVisualiserParams) {
         interval = setInterval(() => {
           let data = algorithmObjectRef.current?.stepForward();
           data && setData(data);
+          if (algorithmObjectRef.current?.done) {
+            setIsPlaying(false);
+            props.setPlaying(false);
+          }
         }, animationTime * 10);
       } else if (!isPlaying && interval) {
         clearInterval(interval);
