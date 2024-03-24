@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./DataView.css";
 import DataBar from "./DataBar";
 
 interface IDataViewParams {
@@ -26,7 +25,7 @@ function DataView(props: IDataViewParams): JSX.Element {
   }, []);
 
   return (
-    <div className="DataView" style={{ gridTemplateColumns: gridColumnString }}>
+    <div className="DataView grid justify-evenly items-end relative w-[95%] h-[94%] m-auto -bottom-[2px]" style={{ gridTemplateColumns: gridColumnString }}>
       {data.map((item, index) => (
         <DataBar
           key={index}

@@ -94,14 +94,14 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
   }, [isPlaying]);
 
   return (
-    <div className="Visualiser">
-      <div className="PlayControlContainer">
+    <div className="w-full h-full rounded-bl-[5px] border-l-[2px] border-b-[2px] border-solid border-white">
+      <div className="float-right h-[40px] w-[240px] m-0 p-0">
         <PlayControl
           googleIconText={googleIconTexts}
           onPlayControlAction={onPlayControlAction}
         />
       </div>
-      <div className="DataViewContainer">
+      <div className="h-full w-full">
         <DataView dataLength={dataLength} data={data} maxData={maxData} />
       </div>
     </div>

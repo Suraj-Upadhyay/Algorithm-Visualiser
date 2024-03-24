@@ -1,5 +1,4 @@
 import React from "react";
-import "./PlayControl.css";
 import { type IGoogleIconTexts } from "@/assets/constants";
 import ActionItem from "./ActionItem";
 

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import "./DataBar.css";
 
 interface IDataBarParams {
   data: number;
@@ -30,7 +29,7 @@ function DataBar(props: IDataBarParams): JSX.Element {
 
   return (
     <div
-      className="DataBar"
+      className="rounded-tl-sm rounded-tr-sm opacity-90"
       style={{
         height: elementHeight,
         width: elementWidth,
