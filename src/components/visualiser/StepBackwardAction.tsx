@@ -8,8 +8,10 @@ interface IStepBackwardActionParams {
 
 function StepBackwardAction(props: IStepBackwardActionParams): JSX.Element {
   return (
-    <div className="StepBackwardAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">{props.googleIcon}</span>
+    <div className="StepBackwardAction cursor-pointer" onClick={props.onPlayControlAction}>
+      <span className="material-symbols-outlined">
+        {props.googleIcon}
+      </span>
     </div>
   );
 }

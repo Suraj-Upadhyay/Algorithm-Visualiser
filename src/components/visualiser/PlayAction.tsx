@@ -8,8 +8,10 @@ interface IPlayActionParams {
 
 function PlayAction(props: IPlayActionParams): JSX.Element {
   return (
-    <div className="PlayAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">{props.googleIcon}</span>
+    <div className="PlayAction cursor-pointer" onClick={props.onPlayControlAction}>
+      <span className="material-symbols-outlined">
+        {props.googleIcon}
+      </span>
     </div>
   );
 }

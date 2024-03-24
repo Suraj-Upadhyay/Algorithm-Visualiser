@@ -8,8 +8,10 @@ interface IStepForwardActionParams {
 
 function StepForwardAction(props: IStepForwardActionParams): JSX.Element {
   return (
-    <div className="StepForwardAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">{props.googleIcon}</span>
+    <div className="StepForwardAction cursor-pointer" onClick={props.onPlayControlAction}>
+      <span className="material-symbols-outlined">
+        {props.googleIcon}
+      </span>
     </div>
   );
 }

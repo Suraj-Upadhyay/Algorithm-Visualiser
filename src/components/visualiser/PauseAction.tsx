@@ -8,8 +8,10 @@ interface IPauseActionParams {
 
 function PauseAction(props: IPauseActionParams): JSX.Element {
   return (
-    <div className="PauseAction" onClick={props.onPlayControlAction}>
-      <span className="material-symbols-outlined">{props.googleIcon}</span>
+    <div className="PauseAction cursor-pointer" onClick={props.onPlayControlAction}>
+      <span className="material-symbols-outlined">
+        {props.googleIcon}
+      </span>
     </div>
   );
 }
