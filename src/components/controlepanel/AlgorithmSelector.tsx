@@ -1,3 +1,4 @@
+import clsx from "clsx";
 import { algorithmListType } from "@/assets/constants";
 import "./AlgorithmSelector.css";
 
@@ -22,7 +23,15 @@ function AlgorithmSelector(props: IAlgorithmSelectorParams) {
           <ul>
             {Object.keys(algoList).map(item => {
               return (
-                <li key={item} onClick={onAlgoUsedChange}>
+                <li
+                  className={
+                    clsx("flex flex-col w-full h-[42.2px] pt-[10px] text-center box-border",
+                    (algoList[item] || item === "None")
+                    ? "hover:opacity-80 cursor-pointer bg-white"
+                    : "bg-gray-200 cursor-default")
+                    }
+                  key={item} onClick={onAlgoUsedChange}
+                >
                   {item}
                 </li>
               );

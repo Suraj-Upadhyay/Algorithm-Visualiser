@@ -42,18 +42,3 @@
   margin: 0;
   padding: 0;
 }
-
-.DropDownList li {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 42.2px;
-  padding-top: 10px;
-  text-align: center;
-  box-sizing: border-box;
-  background-color: white;
-}
-
-.DropDownList li:hover {
-  opacity: 80%;
-}
