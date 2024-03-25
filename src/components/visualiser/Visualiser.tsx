@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import DataView from "./DataView";
-import PlayControl from "./PlayControl";
-import { googleIconTexts } from "@/assets/constants";
+import ActionItem from "./ActionItem";
 import { Algorithm } from "@/assets/algorithms";
+import { ReactIcons } from "@/assets/constants";
 
 interface IVisualiserParams {
   dataBars: number;
@@ -19,49 +19,13 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
   const algorithmName = props.algoUsed;
 
   const algorithmObjectRef = useRef<Algorithm | null>(null);
-
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
-  const [stepNumber, setStepNumber] = useState<number>(0);
   const [data, setData] = useState<Array<{ data: number; index?: number }>>([]);
-
-  const onPlayControlAction = (
-    event: React.MouseEvent<HTMLDivElement>,
-  ): void => {
-    const actionItemClicked = (event.target as HTMLElement).textContent;
-    let newStepNumber;
-    // eslint-disable-next-line
-    switch (actionItemClicked) {
-      case googleIconTexts.play:
-        setIsPlaying(true);
-        props.setPlaying(true);
-        break;
-      case googleIconTexts.pause:
-        setIsPlaying(false);
-        props.setPlaying(false);
-        break;
-      case googleIconTexts.forward:
-        newStepNumber = stepNumber + 1;
-        setStepNumber(newStepNumber);
-        break;
-      case googleIconTexts.backward:
-        newStepNumber = stepNumber - 1;
-        setStepNumber(newStepNumber);
-        break;
-    }
-  };
 
   useEffect(() => {
     algorithmObjectRef.current = new Algorithm(dataLength, maxData);
     algorithmObjectRef.current.createAlgorithmObject(algorithmName);
     setData(algorithmObjectRef.current.stepBackward());
-    // eslint-disable-next-line
-  }, [dataLength, maxData]);
-
-  useEffect(() => {
-    if (algorithmObjectRef.current !== null) {
-      algorithmObjectRef.current.createAlgorithmObject(algorithmName);
-      setData(algorithmObjectRef.current.stepBackward());
-    }
   }, [dataLength, maxData]);
 
   useEffect(() => {
@@ -92,13 +56,51 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
     };
   }, [isPlaying]);
 
+  const onPlay = (): void => {
+    setIsPlaying(true);
+  };
+
+  const onStop = (): void => {
+    setIsPlaying(false);
+  };
+
+  const onForward = (): void => {
+    if (algorithmObjectRef.current === null) return;
+    const forwardData = algorithmObjectRef.current.stepForward();
+    setData(forwardData);
+  };
+
+  const onBackward = (): void => {
+    if (algorithmObjectRef.current === null) return;
+    const backwardData = algorithmObjectRef.current.stepBackward();
+    setData(backwardData);
+  };
+
   return (
-    <div className="w-full h-full rounded-bl-[5px] border-l-[2px] border-b-[2px] border-solid border-white">
-      <div className="float-right h-[40px] w-[240px] m-0 p-0">
-        <PlayControl
-          googleIconText={googleIconTexts}
-          onPlayControlAction={onPlayControlAction}
-        />
+    <div className="h-full w-full rounded-bl-[5px] border-b-[2px] border-l-[2px] border-solid border-white">
+      <div className="float-right m-0 h-[40px] w-[240px] p-0">
+        <div className="relative z-10 h-full w-full rounded-[10px]">
+          <ActionItem
+            disabled={!isPlaying}
+            Icon={ReactIcons.pause}
+            onPlayControlAction={onStop}
+          />
+          <ActionItem
+            disabled={isPlaying}
+            Icon={ReactIcons.play}
+            onPlayControlAction={onPlay}
+          />
+          <ActionItem
+            disabled={isPlaying}
+            Icon={ReactIcons.forward}
+            onPlayControlAction={onForward}
+          />
+          <ActionItem
+            disabled={isPlaying}
+            Icon={ReactIcons.backward}
+            onPlayControlAction={onBackward}
+          />
+        </div>
       </div>
       <div className="h-full w-full">
         <DataView dataLength={dataLength} data={data} maxData={maxData} />

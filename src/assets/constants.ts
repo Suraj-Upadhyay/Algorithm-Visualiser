@@ -3,6 +3,15 @@
 import { type AlgorithmImplementation } from "./algorithms/Algorithm.type";
 import { SelectionSort } from "./algorithms/index";
 
+import {
+  IoIosPlayCircle,
+  IoMdPause,
+  IoIosArrowForward,
+  IoIosArrowBack,
+} from "react-icons/io";
+import { BsFillStopCircleFill } from "react-icons/bs";
+import { type IconType } from "react-icons";
+
 export const MINDATABARS = 5;
 export const MAXDATABARS = 100;
 export const DATABARSSTEP = 5;
@@ -66,13 +75,14 @@ export const controlPanelConstants = {
 export type controlPanelConstantsType = typeof controlPanelConstants;
 export type algorithmListType = typeof ALGO_IMPLEMENTATION_LIST;
 
-export interface IGoogleIconTexts {
-  [key: string]: string;
+interface IReactIcons {
+  [key: string]: IconType;
 }
 
-export const googleIconTexts: IGoogleIconTexts = {
-  play: "play_circle",
-  pause: "pause",
-  forward: "arrow_forward_ios",
-  backward: "arrow_back_ios",
+export const ReactIcons: IReactIcons = {
+  play: IoIosPlayCircle,
+  pause: IoMdPause,
+  stop: BsFillStopCircleFill,
+  forward: IoIosArrowForward,
+  backward: IoIosArrowBack,
 };

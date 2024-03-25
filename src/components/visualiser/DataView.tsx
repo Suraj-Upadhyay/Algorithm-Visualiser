@@ -25,7 +25,10 @@ function DataView(props: IDataViewParams): JSX.Element {
   }, []);
 
   return (
-    <div className="DataView grid justify-evenly items-end relative w-[95%] h-[94%] m-auto -bottom-[2px]" style={{ gridTemplateColumns: gridColumnString }}>
+    <div
+      className="DataView relative -bottom-[2px] m-auto grid h-[94%] w-[95%] items-end justify-evenly"
+      style={{ gridTemplateColumns: gridColumnString }}
+    >
       {data.map((item, index) => (
         <DataBar
           key={index}
