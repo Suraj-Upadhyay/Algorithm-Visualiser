@@ -58,27 +58,27 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
 
   const onPlay = (): void => {
     setIsPlaying(true);
-  }
+  };
 
   const onStop = (): void => {
     setIsPlaying(false);
-  }
+  };
 
   const onForward = (): void => {
     if (algorithmObjectRef.current === null) return;
     const forwardData = algorithmObjectRef.current.stepForward();
     setData(forwardData);
-  }
+  };
 
   const onBackward = (): void => {
     if (algorithmObjectRef.current === null) return;
     const backwardData = algorithmObjectRef.current.stepBackward();
     setData(backwardData);
-  }
+  };
 
   return (
-    <div className="w-full h-full rounded-bl-[5px] border-l-[2px] border-b-[2px] border-solid border-white">
-      <div className="float-right h-[40px] w-[240px] m-0 p-0">
+    <div className="h-full w-full rounded-bl-[5px] border-b-[2px] border-l-[2px] border-solid border-white">
+      <div className="float-right m-0 h-[40px] w-[240px] p-0">
         <div className="relative z-10 h-full w-full rounded-[10px]">
           <ActionItem
             disabled={!isPlaying}

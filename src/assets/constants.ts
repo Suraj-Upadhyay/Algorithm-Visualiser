@@ -3,7 +3,12 @@
 import { type AlgorithmImplementation } from "./algorithms/Algorithm.type";
 import { SelectionSort } from "./algorithms/index";
 
-import { IoIosPlayCircle, IoMdPause, IoIosArrowForward, IoIosArrowBack } from "react-icons/io";
+import {
+  IoIosPlayCircle,
+  IoMdPause,
+  IoIosArrowForward,
+  IoIosArrowBack,
+} from "react-icons/io";
 import { BsFillStopCircleFill } from "react-icons/bs";
 import { type IconType } from "react-icons";
 
@@ -71,7 +76,7 @@ export type controlPanelConstantsType = typeof controlPanelConstants;
 export type algorithmListType = typeof ALGO_IMPLEMENTATION_LIST;
 
 interface IReactIcons {
-  [key: string]: IconType
+  [key: string]: IconType;
 }
 
 export const ReactIcons: IReactIcons = {
@@ -79,5 +84,5 @@ export const ReactIcons: IReactIcons = {
   pause: IoMdPause,
   stop: BsFillStopCircleFill,
   forward: IoIosArrowForward,
-  backward: IoIosArrowBack
-}
+  backward: IoIosArrowBack,
+};
