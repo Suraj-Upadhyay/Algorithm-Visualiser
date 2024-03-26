@@ -57,6 +57,7 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
   }, [isPlaying]);
 
   const onPlay = (): void => {
+    props.setPlaying(true);
     setIsPlaying(true);
   };
 
@@ -68,6 +69,9 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
     if (algorithmObjectRef.current === null) return;
     const forwardData = algorithmObjectRef.current.stepForward();
     setData(forwardData);
+    if (algorithmObjectRef.current.done) {
+      props.setPlaying(false);
+    }
   };
 
   const onBackward = (): void => {
