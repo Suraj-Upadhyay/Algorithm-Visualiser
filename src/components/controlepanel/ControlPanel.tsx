@@ -1,10 +1,7 @@
 import React from "react";
-import "./ControlPanel.css";
 import { type controlPanelConstantsType } from "@/assets/constants";
 import AlgorithmSelector from "./AlgorithmSelector";
-import DataLengthSelector from "./DataLengthSelector";
-import DataSizeSelector from "./DataSizeSelector";
-import TimeLengthSelector from "./TimeLengthSelector";
+import Selector from "./Selector";
 
 interface IControlPanelParams {
   constants: controlPanelConstantsType;
@@ -19,39 +16,42 @@ interface IControlPanelParams {
 function ControlPanel(props: IControlPanelParams): JSX.Element {
   const controlPanelConstants = props.constants;
   return (
-    <div className={`ControlPanel relative ${props.playing && "disabled"}`}>
-      <div className="interactables">
+    <div className="relative flex h-full w-full flex-col bg-white bg-opacity-10">
+      <div className="m-auto h-[15%] w-[90%] bg-white bg-opacity-10">
         <AlgorithmSelector
           algoList={controlPanelConstants.ALGOLIST}
           algoUsed={props.algoUsed}
           onAlgoUsedChange={props.onAlgoUsedChange}
         />
       </div>
-      <div className="interactables">
-        <DataLengthSelector
-          minDataBars={controlPanelConstants.MINDATABARS}
-          maxDataBars={controlPanelConstants.MAXDATABARS}
+      <div className="m-auto h-[15%] w-[90%] bg-white bg-opacity-10">
+        <Selector
+          label="Generate Data"
+          min={controlPanelConstants.MINDATABARS}
+          max={controlPanelConstants.MAXDATABARS}
           step={controlPanelConstants.DATABARSSTEP}
-          defaultDataBars={controlPanelConstants.DEFAULTDATABARS}
-          onDataBarsChange={props.onDataBarsChange}
+          default={controlPanelConstants.DEFAULTDATABARS}
+          onChange={props.onDataBarsChange}
         />
       </div>
-      <div className="interactables">
-        <TimeLengthSelector
-          minTime={controlPanelConstants.MINTIME}
-          maxTime={controlPanelConstants.MAXTIME}
+      <div className="m-auto h-[15%] w-[90%] bg-white bg-opacity-10">
+        <Selector
+          label="Animation Time"
+          min={controlPanelConstants.MINTIME}
+          max={controlPanelConstants.MAXTIME}
           step={controlPanelConstants.TIMESTEP}
-          defaultTime={controlPanelConstants.DEFAULTTIME}
-          onAnimationTimeChange={props.onAnimationTimeChange}
+          default={controlPanelConstants.DEFAULTTIME}
+          onChange={props.onAnimationTimeChange}
         />
       </div>
-      <div className="interactables">
-        <DataSizeSelector
-          minDataSize={controlPanelConstants.MINDATASPREAD}
-          maxDataSize={controlPanelConstants.MAXDATASPREAD}
+      <div className="m-auto h-[15%] w-[90%] bg-white bg-opacity-10">
+        <Selector
+          label="Maximum Data"
+          min={controlPanelConstants.MINDATASPREAD}
+          max={controlPanelConstants.MAXDATASPREAD}
           step={controlPanelConstants.DATASPREADSTEP}
-          defaultDataSize={controlPanelConstants.DEFAULTDATASPREAD}
-          onDataSizeChange={props.onDataSpreadChange}
+          default={controlPanelConstants.DEFAULTDATASPREAD}
+          onChange={props.onDataSpreadChange}
         />
       </div>
       {props.playing && (
