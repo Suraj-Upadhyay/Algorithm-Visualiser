@@ -1,7 +1,6 @@
 import React from "react";
 import clsx from "clsx";
 import { type algorithmListType } from "@/assets/constants";
-import "./AlgorithmSelector.css";
 
 interface IAlgorithmSelectorParams {
   algoList: algorithmListType;
@@ -16,11 +15,13 @@ function AlgorithmSelector(props: IAlgorithmSelectorParams): JSX.Element {
   const onAlgoUsedChange = props.onAlgoUsedChange;
 
   return (
-    <div className="AlgorithmSelector">
-      <div className="DropDown">
-        <p>{algoUsed}</p>
-        <div className="DropDownList">
-          <ul>
+    <div className="h-full w-full">
+      <div className="group relative top-[30%] m-auto h-[40%] w-[70%] rounded-[20px] bg-[#ff72f9]">
+        <p className="m-auto cursor-pointer p-[10px] text-center font-extrabold text-white">
+          {algoUsed}
+        </p>
+        <div className="absolute top-[43px] z-10 hidden h-[700%] w-full overflow-y-auto rounded-[20px] bg-[#fc8cf6] group-hover:block">
+          <ul className="m-0 list-none p-0">
             {Object.keys(algoList).map((item) => {
               return (
                 <li
