@@ -1,7 +1,5 @@
 import SelectionSort from "./SelectionSort";
 import BubbleSort from "./BubbleSort";
+import InsertionSort from "./InsertionSort";
 
-export {
-  SelectionSort,
-  BubbleSort
-}
+export { SelectionSort, BubbleSort, InsertionSort };

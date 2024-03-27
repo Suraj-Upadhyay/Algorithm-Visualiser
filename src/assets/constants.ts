@@ -31,7 +31,7 @@ export const ALGO_IMPLEMENTATION_LIST: {
   None: null,
   "Selection Sort": SortingAlgorithms.SelectionSort,
   "Bubble Sort": SortingAlgorithms.BubbleSort,
-  "Insertion Sort": null,
+  "Insertion Sort": SortingAlgorithms.InsertionSort,
   "Merge Sort": null,
   "Quick Sort": null,
   "Heap Sort": null,
