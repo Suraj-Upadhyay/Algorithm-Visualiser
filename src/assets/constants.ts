@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/consistent-indexed-object-style */
 /* eslint-disable object-shorthand */
 import { type AlgorithmImplementation } from "./algorithms/Algorithm.type";
-import { SelectionSort } from "./algorithms/index";
+import { SelectionSort, BubbleSort } from "./algorithms/index";
 
 import {
   IoIosPlayCircle,
@@ -30,7 +30,7 @@ export const ALGO_IMPLEMENTATION_LIST: {
 } = {
   None: null,
   "Selection Sort": SelectionSort,
-  "Bubble Sort": null,
+  "Bubble Sort": BubbleSort,
   "Insertion Sort": null,
   "Merge Sort": null,
   "Quick Sort": null,
