@@ -1,13 +1,13 @@
 import { type IAlgorithmImplementation } from "../Algorithm.type";
 
 class InsertionSort implements IAlgorithmImplementation {
-  currentSortedElements: number;
   currentSortingIndex: number;
+  currentSwappingIndex: number;
   done: boolean;
 
   constructor() {
-    this.currentSortedElements = 0;
-    this.currentSortingIndex = 0;
+    this.currentSortingIndex = 1;
+    this.currentSwappingIndex = this.currentSortingIndex - 1;
     this.done = false;
   }
 
@@ -35,49 +35,57 @@ class InsertionSort implements IAlgorithmImplementation {
     }>;
     done: boolean;
   } {
-    if (this.done || this.currentSortedElements >= elementArray.length) {
+    let newIndex = [];
+    if (this.currentSortingIndex >= elementArray.length) {
       this.done = true;
       return {
         newIndex: [{ previousIndex: -1, newIndex: -1 }],
         done: this.done,
       };
     }
-    const elementAtCurrentIndex = this.getElementAtIndex(
+    const currentSwappingElement = this.getElementAtIndex(
       elementArray,
-      this.currentSortingIndex,
+      this.currentSwappingIndex,
     );
-    const elementToBeCompared = this.getElementAtIndex(
+    const currentSwappedElement = this.getElementAtIndex(
       elementArray,
-      this.currentSortingIndex + 1,
+      this.currentSwappingIndex + 1,
     );
-    let newIndex = [];
     if (
-      elementAtCurrentIndex !== undefined &&
-      elementToBeCompared !== undefined &&
-      elementAtCurrentIndex > elementToBeCompared
-    )
+      currentSwappingElement !== undefined &&
+      currentSwappedElement !== undefined &&
+      currentSwappingElement > currentSwappedElement
+    ) {
       newIndex = [
         {
-          previousIndex: this.currentSortingIndex,
-          newIndex: this.currentSortingIndex + 1,
+          previousIndex: this.currentSwappingIndex,
+          newIndex: this.currentSwappingIndex + 1,
         },
         {
-          previousIndex: this.currentSortingIndex + 1,
-          newIndex: this.currentSortingIndex,
+          previousIndex: this.currentSwappingIndex + 1,
+          newIndex: this.currentSwappingIndex,
         },
       ];
-    else newIndex = [{ previousIndex: -1, newIndex: -1 }];
-    if (
-      ++this.currentSortingIndex >=
-      elementArray.length - this.currentSortedElements
+      if (this.currentSwappingIndex === 0) {
+        this.currentSortingIndex++;
+        this.currentSwappingIndex = this.currentSortingIndex - 1;
+      } else {
+        this.currentSwappingIndex--;
+      }
+      return { newIndex, done: this.done };
+    } else if (
+      currentSwappingElement !== undefined &&
+      currentSwappedElement !== undefined &&
+      currentSwappingElement <= currentSwappedElement
     ) {
-      this.currentSortedElements++;
-      this.currentSortingIndex = 0;
+      this.currentSortingIndex++;
+      this.currentSwappingIndex = this.currentSortingIndex - 1;
+      return {
+        newIndex: [{ previousIndex: -1, newIndex: -1 }],
+        done: this.done,
+      };
     }
-    if (this.currentSortedElements >= elementArray.length) {
-      this.done = true;
-    }
-    return { newIndex, done: this.done };
+    return { newIndex: [{ previousIndex: -1, newIndex: -1 }], done: this.done };
   }
 }
 
