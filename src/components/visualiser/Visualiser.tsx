@@ -29,6 +29,11 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
   }, [dataLength, maxData]);
 
   useEffect(() => {
+    if (algorithmObjectRef.current !== null)
+      algorithmObjectRef.current.createAlgorithmObject(algorithmName);
+  }, [algorithmName]);
+
+  useEffect(() => {
     let interval: NodeJS.Timeout | null = null;
 
     if (isPlaying) {
@@ -43,7 +48,7 @@ function Visualiser(props: IVisualiserParams): JSX.Element {
           setIsPlaying(false);
           props.setPlaying(false);
         }
-      }, animationTime * 10);
+      }, animationTime * 10); // TODO: Add a custom multiplier here for different algorithms. To accomodate their natural slow pace.
     } else if (!isPlaying && interval !== null) {
       clearInterval(interval);
     }
