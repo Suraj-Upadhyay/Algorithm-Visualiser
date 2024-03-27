@@ -1,4 +1,4 @@
-import * as constants from "../constants";
+import * as constants from "../assets/constants";
 import { type IAlgorithmImplementation } from "./Algorithm.type";
 
 class Element {
