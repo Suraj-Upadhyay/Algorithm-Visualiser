@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import DataView from "./DataView";
 import ActionItem from "./ActionItem";
-import { Algorithm } from "@/assets/algorithms";
+import { Algorithm } from "@/algorithms";
 import { ReactIcons } from "@/assets/constants";
 
 interface IVisualiserParams {

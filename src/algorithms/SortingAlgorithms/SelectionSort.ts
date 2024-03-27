@@ -1,4 +1,4 @@
-import { type IAlgorithmImplementation } from "./Algorithm.type";
+import { type IAlgorithmImplementation } from "@/algorithms/Algorithm.type";
 
 class SelectionSort implements IAlgorithmImplementation {
   currentSortingIndex: number;
