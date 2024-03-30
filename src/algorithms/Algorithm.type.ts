@@ -1,4 +1,5 @@
 export interface IAlgorithmImplementation {
+  done: boolean;
   step: (
     elementArray: Array<{
       data: number;
